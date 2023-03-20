@@ -1,8 +1,9 @@
 from django.shortcuts import render,redirect
-from django.contrib.auth.models import User
+
 from django.contrib.auth import authenticate
 from django.contrib import messages
 from .forms import CreateUserForm
+import random
 
 def home_page(request):
     return render(request,"index.html")
@@ -29,4 +30,6 @@ def login_page(request):
     else:
         return render(request,"login.html")
 
+from django.shortcuts import render
 
+# Create your views here.
