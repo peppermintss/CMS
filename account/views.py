@@ -3,9 +3,11 @@ from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate
 from django.contrib import messages
 from .forms import CreateUserForm
-import random
+from django.contrib.auth.decorators import login_required
 
-def home_page(request):
+
+def dashboard(request):
+    print(request.user.groups.all()[0])
     return render(request,"index.html")
 
 def register_page(request,methods=['GET','POST']):
@@ -18,18 +20,5 @@ def register_page(request,methods=['GET','POST']):
     context = {'form':form}
     return render (request,'register.html',context)
 
-def login_page(request):
-    if request.method == "POST":
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        user = authenticate(username=username,password=password)
-        if user is not None:
-            return redirect('home-page')
-        else:
-            return render(request,'403.html')
-    else:
-        return render(request,"login.html")
-
-from django.shortcuts import render
 
 # Create your views here.

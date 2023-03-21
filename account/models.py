@@ -7,3 +7,6 @@ class Account(AbstractUser):
     semester = models.IntegerField(null=True,blank=True)
     phone_number = PhoneNumberField(blank=True)
     
+    USERNAME_FIELD = 'username'
+    def __str__(self):
+        return self.username
