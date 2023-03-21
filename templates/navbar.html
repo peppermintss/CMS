@@ -28,13 +28,22 @@
 
         <div class="flex items-center gap-4">
           <div class="sm:flex sm:gap-4">
+            {% if user.is_authenticated %}
             <a
               class="rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white shadow"
               href="{% url 'login-page' %}"
             >
+              Logout
+            </a>
+            {% else %}
+
+              <a
+              class="rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white shadow"
+              href="{% url 'logout-page' %}"
+            >
               Login
             </a>
-
+            {% endif %}
             <div class="hidden sm:flex">
               <a
                 class="rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-teal-600"

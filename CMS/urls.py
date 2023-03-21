@@ -18,6 +18,7 @@ from django.urls import path
 from account.views import register_page,dashboard
 from django.contrib.auth.views import LoginView, LogoutView
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',register_page,name="home-page"),

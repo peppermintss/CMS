@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def dashboard(request):
+    print(request.user.is_authenticated)
     group = request.user.groups.all()[0]
     group = str(group)
     if group == "admin":
@@ -16,6 +17,9 @@ def dashboard(request):
     else:
         return render(request,"sdash.html")
    
+#why createuserform tho? idk i forgot why. future me don't touch it unless you are 100% 
+#sure on the fix.
+
 
 def register_page(request,methods=['GET','POST']):
     form = CreateUserForm()
