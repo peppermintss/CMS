@@ -5,10 +5,17 @@ from django.contrib import messages
 from .forms import CreateUserForm
 from django.contrib.auth.decorators import login_required
 
-
+@login_required
 def dashboard(request):
-    print(request.user.groups.all()[0])
-    return render(request,"index.html")
+    group = request.user.groups.all()[0]
+    group = str(group)
+    if group == "admin":
+        return render(request,"adash.html")
+    elif group=="teacher":
+        return render(request,'tdash.html')
+    else:
+        return render(request,"sdash.html")
+   
 
 def register_page(request,methods=['GET','POST']):
     form = CreateUserForm()
