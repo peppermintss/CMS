@@ -1,18 +1,53 @@
 {% include 'navbar.html' %}
+{% load static%}
 
-<form method="POST">
-  {% csrf_token %}
-  {{form.as_p}}
+<body>
+    <div class="h-screen flex flex-col justify-center items-center">
+      <div class="container mx-auto ">
+        <div class="flex flex-col lg:flex-row w-10/12 lg:w-8/12 bg-white rounded-xl mx-auto shadow-lg overflow-hidden">
+          <div class="w-full lg:w-1/2 flex flex-col items-center justify-center p-12 bg-no-repeat bg-cover bg-center">
+            <img src="{% static 'images/bg-register.jpg' %}" alt="Background image">
+            <h1 class="text-black text-3xl mb-3">Welcome</h1>
+            <div>
+              <p class="text-white">Personalize Your Experience <a href="#" class="text-purple-500 font-semibold"></a></p>
+            </div>
+          </div>
+          <div class="w-full lg:w-1/2 py-8 px-8">
+            <h2  class="text-3xl mb-4">Register</h2>
+            <p class="mb-4">
+              Ready to take the first step? Register now and start your journey with us!
+            </p>
+            <form action="#" method="POST">
+              {% csrf_token %}
+              <div class="grid grid-cols-2 gap-5">
+                <input type="text" placeholder="Firstname" class="border border-gray-400 py-1 px-2" name="firstname">
+                <input type="text" placeholder="Lastname" class="border border-gray-400 py-1 px-2" name="lastname">
+              </div>
+              <div class="mt-5">
+                <input type="text" placeholder="Email" class="border border-gray-400 py-1 px-2 w-full" name="'email">
+              </div>
+              <div class="mt-5">
+                <input type="password" placeholder="Password" class="border border-gray-400 py-1 px-2 w-full" name="password">
+              </div>
+              <div class="mt-5">
+                <input type="password" placeholder="Confirm Password" class="border border-gray-400 py-1 px-2 w-full" name="confirm_password">
+              </div>
+              <div class="mt-5">
+                <input type="text" placeholder="Phone number" class="border border-gray-400 py-1 px-2 w-full" name="phone_number">
+              </div>
+              <div class="mt-5">
+                <input type="text" placeholder="Semester" class="border border-gray-400 py-1 px-2 w-full" name="semester">
+              </div>
+              <div class="mt-5">
+                <input type="text" placeholder="Address" class="border border-gray-400 py-1 px-2 w-full" name="address">
+              </div>
 
-      <button
-        type="submit"
-        class="inline-block rounded-lg bg-blue-500 px-5 py-3 text-sm font-medium text-white"
-      >
-        Sign in
-      </button>
+              <div class="mt-5">
+                <button class="w-full bg-teal-700 hover:bg-teal-600 py-3 text-center text-white">Register Now</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
-  </form>
-</div>
-
-    </body>
-</html>
+</body>
