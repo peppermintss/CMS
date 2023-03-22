@@ -20,26 +20,36 @@
             <form action="#" method="POST">
               {% csrf_token %}
               <div class="grid grid-cols-2 gap-5">
-                <input type="text" placeholder="Firstname" class="border border-gray-400 py-1 px-2" name="firstname">
-                <input type="text" placeholder="Lastname" class="border border-gray-400 py-1 px-2" name="lastname">
+                {{form.username.label}}
+                {{form.username}}
+                {{form.first_name.label}}
+                {{form.first_name}}
+                {{form.last_name.label}}
+                {{form.last_name}}
               </div>
               <div class="mt-5">
-                <input type="text" placeholder="Email" class="border border-gray-400 py-1 px-2 w-full" name="'email">
+                {{form.email.label}}
+                {{form.email}}
               </div>
               <div class="mt-5">
-                <input type="password" placeholder="Password" class="border border-gray-400 py-1 px-2 w-full" name="password">
+                {{form.password1.label}}
+                {{form.password1}}
               </div>
               <div class="mt-5">
-                <input type="password" placeholder="Confirm Password" class="border border-gray-400 py-1 px-2 w-full" name="confirm_password">
+                {{form.password2.label}}
+                {{form.password2}}
               </div>
               <div class="mt-5">
-                <input type="text" placeholder="Phone number" class="border border-gray-400 py-1 px-2 w-full" name="phone_number">
+                {{form.phone_number.label}}
+                {{form.phone_number}}
               </div>
               <div class="mt-5">
-                <input type="text" placeholder="Semester" class="border border-gray-400 py-1 px-2 w-full" name="semester">
+                {{form.semester.label}}
+               {{form.semester}}
               </div>
               <div class="mt-5">
-                <input type="text" placeholder="Address" class="border border-gray-400 py-1 px-2 w-full" name="address">
+                {{form.address.label}}
+                {{form.address}}
               </div>
 
               <div class="mt-5">

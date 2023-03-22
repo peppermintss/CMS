@@ -22,7 +22,6 @@ def dashboard(request):
 #why createuserform tho? idk i forgot why. future me don't touch it unless you are 100% 
 #sure on the fix.
 
-
 def register_page(request,methods=['GET','POST']):
     form = CreateUserForm()
     if request.method == "POST":
@@ -32,6 +31,5 @@ def register_page(request,methods=['GET','POST']):
             return redirect("home-page")
     context = {'form':form}
     return render (request,'register.html',context)
-
 
 # Create your views here.
