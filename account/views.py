@@ -5,6 +5,8 @@ from django.contrib import messages
 from .forms import CreateUserForm
 from django.contrib.auth.decorators import login_required
 
+#OO LOOK AT THIS IF ELSE LADDER OO ITS NOT GOOD PRACTISE OOO SO SCARY I CRY
+
 @login_required
 def dashboard(request):
     print(request.user.is_authenticated)
