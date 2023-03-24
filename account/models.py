@@ -9,6 +9,7 @@ class Account(AbstractUser):
     address = models.CharField(max_length=150,null=True,blank=True)
     semester = models.IntegerField(null=True,blank=True)
     phone_number = PhoneNumberField(blank=True)
+    faculty= models.CharField(max_length=50)
     
     USERNAME_FIELD = 'username'
     def __str__(self):
