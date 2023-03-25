@@ -54,7 +54,7 @@ def add_student(request,methods=['GET','POST']):
             student.save()
             student_group = Group.objects.get(name="student")
             student.groups.add(student_group)
-            return redirect("home-page")
+            return redirect("dashboard")
         else:
             print (form.errors)
     context = {'form':form}
