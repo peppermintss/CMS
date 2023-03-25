@@ -1,3 +1,9 @@
 {% include 'navbar.html' %}
-<a href="#"> Add student</a>
+{% load static %}
+
+<body>
+    
+
+<button hx-get="/add_student"  hx-target="body" hx-sawp="innerHTMl">Add student</button>
 <a href="#"> Add teacher</a>
+</body>
