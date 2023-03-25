@@ -26,8 +26,7 @@
             <form action="#" method="POST">
               {% csrf_token %}
               <div class="grid grid-cols-2 gap-5">
-                {{form.username.label}}
-                {{form.username}}
+               
                 {{form.first_name.label}}
                 {{form.first_name}}
                 {{form.last_name.label}}
@@ -37,14 +36,7 @@
                 {{form.email.label}}
                 {{form.email}}
               </div>
-              <div class="mt-5">
-                {{form.password1.label}}
-                {{form.password1}}
-              </div>
-              <div class="mt-5">
-                {{form.password2.label}}
-                {{form.password2}}
-              </div>
+              
               <div class="mt-5">
                 {{form.phone_number.label}}
                 {{form.phone_number}}
@@ -59,7 +51,7 @@
               </div>
 
               <div class="mt-5">
-                <button _= "on click trigger closeModal" hx-post="/register/" hx-target="body" class="w-full bg-teal-700 hover:bg-teal-600 py-3 text-center text-white">Register Now</button>
+                <button _= "on click trigger closeModal" hx-post="/add_student/" hx-target="body" class="w-full bg-teal-700 hover:bg-teal-600 py-3 text-center text-white">Register Now</button>
               </div>
             </form>
           </div>
