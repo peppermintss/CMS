@@ -1,0 +1,5 @@
+{% include 'navbar.html' %}
+<h1> 
+    {{course}}
+</h1>
+<button hx-get="/add_student" hx-target="body" hx-sawp="innerHTMl">Add student</button>

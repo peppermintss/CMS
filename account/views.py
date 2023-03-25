@@ -7,18 +7,15 @@ import random
 
 @login_required
 def dashboard(request):
-   
-    try:
-        group = request.user.groups.all()[0]
-        group = str(group)
-        if group == "admin":
-            return render(request,"adash.html")
-        elif group=="teacher":
-            return render(request,'tdash.html')
-        else:
-            return render(request,"sdash.html")
-    except:
+    group = request.user.groups.all()[0]
+    group = str(group)
+    if group == "admin":
+        return render(request,"adash.html")
+    elif group=="teacher":
+        return render(request,'tdash.html')
+    else:
         return render(request,"sdash.html")
+    
    
 #why createuserform tho? idk i forgot why. future me don't touch it unless you are 100% 
 #sure on the fix.
@@ -40,7 +37,9 @@ def register_page(request,methods=['GET','POST']):
 
 #This function is very very ugly but it works. Maybe override the save() method instead and make it cleaner?
 
-def add_student(request,methods=['GET','POST']):
+def add_student(request):
+
+    print(request.path)
     form = CreateUserForm()
     if request.method == "POST":
         form= CreateUserForm(request.POST)
