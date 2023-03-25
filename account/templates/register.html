@@ -3,9 +3,6 @@
 
 <link rel="stylesheet" href="{% static 'images/style.css' %}">
 
-<div id="modal" _="on closeModal add .closing then wait for animationend then remove me">
-	<div class="modal-underlay"  _="on click trigger closeModal"></div>
-	<div class="modal-content">
  
     
     <div class="h-screen flex flex-col justify-center items-center">
@@ -27,7 +24,7 @@
               Register a new student.
               {% endif %}
             </p>
-            <form  method="POST" hx-post="/add_student/" hx-trigger="reset" hx-boost="#modal">
+            <form method="POST" hx-post="/add_student/" hx-target="body">
               {% csrf_token %}
               <div class="grid grid-cols-2 gap-5">
                
@@ -60,7 +57,7 @@
 
 
               <div class="mt-5">
-                <button _= "on click trigger closeModal"  class="w-full bg-teal-700 hover:bg-teal-600 py-3 text-center text-white">Register Now</button>
+                <button type="submit"  hx-target="body" class="w-full bg-teal-700 hover:bg-teal-600 py-3 text-center text-white">Register Now</button>
               </div>
             </form>
           </div>

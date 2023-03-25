@@ -62,7 +62,8 @@ def add_student(request):
             student.save()
             group= Group.objects.get(name=f"{group}")
             student.groups.add(group)
-            
+            print(request.headers['Referer'])
+            return redirect(request.headers['Referer'])
         else:
             print (form.errors)
     context = {'form':form,'faculty':faculty}
