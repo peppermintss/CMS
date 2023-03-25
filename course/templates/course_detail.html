@@ -1,5 +1,9 @@
 {% include 'navbar.html' %}
 <h1> 
-    {{course}}
+    <div name="course-name">
+        {{course}}
+    </div>
 </h1>
-<button hx-get="/add_student" hx-target="body" hx-sawp="innerHTMl">Add student</button>
+<button hx-get="/add_student" hx-target="body" hx-sawp="beforeend">New entry</button>
+
+

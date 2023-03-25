@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     'account',
     'phonenumber_field',
     'course',
+    'tailwind',
+    'theme',
+    'django_browser_reload',
 ]
 
 MIDDLEWARE = [
@@ -50,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_browser_reload.middleware.BrowserReloadMiddleware',
 ]
 
 ROOT_URLCONF = 'CMS.urls'
@@ -138,3 +142,11 @@ LOGIN_URL = "home-page"
 LOGOUT_REDIRECT_URL ="home-page"
 
 PHONENUMBER_DEFAULT_REGION= "NP"
+
+TAILWIND_APP_NAME ='theme'
+
+INTERNAL_IPS =[
+    '127.0.0.1',
+]
+
+NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"

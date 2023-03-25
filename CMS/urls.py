@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include
 from account.views import register_page,dashboard,add_student
 from django.contrib.auth.views import LoginView, LogoutView
 from course.views import course_detail_view
@@ -27,6 +27,8 @@ urlpatterns = [
     path('dashboard/',dashboard,name='dashboard'),
     path('add_student/',add_student,name="add-student"),
     path('<str:course>/',course_detail_view,name="course-detail-view"),
+
+    path("__reload__/", include("django_browser_reload.urls")),
     
   
 ]

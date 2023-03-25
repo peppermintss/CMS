@@ -4,7 +4,7 @@ from .models import Account
 
 
 fields = list(UserAdmin.fieldsets)
-fields[1] = ('Personal Info',{'fields': ('first_name','last_name','email','semester','phone_number')})
+fields[1] = ('Personal Info',{'fields': ('first_name','last_name','email','semester','phone_number','faculty')})
 UserAdmin.fieldsets = tuple(fields)
 
 admin.site.register(Account,UserAdmin)
