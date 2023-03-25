@@ -136,3 +136,5 @@ LOGIN_REDIRECT_URL = "dashboard"
 LOGIN_URL = "home-page"
 
 LOGOUT_REDIRECT_URL ="home-page"
+
+PHONENUMBER_DEFAULT_REGION= "NP"
