@@ -4,6 +4,11 @@
         {{course}}
     </div>
 </h1>
-<button hx-get="/add_student" hx-target="body" hx-sawp="beforeend">New entry</button>
+{% for i in semesters %} 
+<a href="{{i}}">{{i}}</a>
+
+
+{% endfor %}
+
 
 
