@@ -1,23 +1,12 @@
-<!-- {% include 'navbar.html' %}
-{% load static %}
-
-<body>
-    
-
-<button hx-get="/add_student"  hx-target="body" hx-sawp="innerHTMl">Add student</button>
-<a href="#"> Add teacher</a>
-</body> -->
+{% include 'navbar.html' %}
 {% load static %}
 <head>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="{% static 'images/style.css' %}">
 </head>
 <body>
-    {% include 'navbar.html' %}
-    <div class="min-w-screen h-screen animated fadeIn faster  fixed  left-0 top-0 flex justify-center items-center inset-0 z-50 outline-none focus:outline-none bg-no-repeat bg-center bg-cover" id="modal-id">
-        <div class="absolute bg-black opacity-80 inset-0 z-0"></div>
-    <div class="relative min-h-screen flex flex-col items-center justify-center "> 
-        <div class="grid mt-8  gap-8 grid-cols-1 md:grid-cols-3 xl:grid-cols-3">
+    <div class="relative flex flex-col items-center justify-center "> 
+        <div class="grid mt-32  gap-8 grid-cols-1 md:grid-cols-3 xl:grid-cols-3">
             <a href="{% url 'course-detail-view' 'csit' %}">
                 <div class="flex flex-col">
                     <div class="bg-white shadow-md  rounded-3xl p-4">
@@ -106,6 +95,5 @@
                 </div>
             </a>
         </div>
-    </div>
     </div>
 </body>
