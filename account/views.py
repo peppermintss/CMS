@@ -3,8 +3,8 @@ from .forms import CreateUserForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Group
 import random
-from .models import Account
-from django.urls import reverse
+from django.http import Http404
+from django.core.exceptions import PermissionDenied
 #OO LOOK AT THIS IF ELSE LADDER OO ITS NOT GOOD PRACTISE OOO SO SCARY I CRY
 
 @login_required
@@ -43,6 +43,9 @@ def register_page(request,methods=['GET','POST']):
 
 # Create your views here.
 def add_account(request,faculty,semester):
+    if not get_referer(request):
+        raise PermissionDenied
+    
     form = CreateUserForm
     if request.method == "POST":
         group = "teacher" if faculty=="teacher" else "student"
@@ -72,3 +75,9 @@ def add_account(request,faculty,semester):
         'semester':semester,
         }
     return render (request,'register.html',context)
+
+def get_referer(request):
+    referer = request.META.get('HTTP_REFERER')
+    if not referer:
+        return None
+    return referer
