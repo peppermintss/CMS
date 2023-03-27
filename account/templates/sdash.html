@@ -1,3 +1,8 @@
 {% include 'navbar.html' %}
 
-<h1> THIS IS THE STUDENT DASHBOARD</h1>
+<h1> Welcome {{user.first_name|title}} {{user.last_name|title}}</h1>
+{{user.faculty|upper}} Semester {{user.semester}} <br>
+{{user.username}} <br>
+{{user.email}} {{user.phone_number}} <br>
+{{user.address}} <br>
+{{user.id}} <br>
