@@ -1,14 +1,31 @@
 {% include 'navbar.html' %}
-<h1> 
-    <div name="course-name">
-        {{course}}
-    </div>
-</h1>
-{% for i in semesters %} 
-<a href="{{i}}">{{i}}</a>
+{% load static %}
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'images/custom_style.css' %}">
+</head>
+<body>
+    <section class="service">
+        <div class="row">
+        {% for i in semesters %} 
+        
+         <div class="service-col">
+            <a href="{{i}}">
+                <p></p>
+                <h3>First Semester</h3>
+                <hr>
+                </a>
+            </div>
+        {% endfor %}
+        </div>
 
-{% endfor %}
-
-
-
+    </section>
+</body>
+</html>

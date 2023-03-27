@@ -3,7 +3,7 @@ from django.http import Http404
 
 from account.models import Account
 def course_detail_view(request,course):
-    allowed_courses = ['csit','bim']
+    allowed_courses = ['csit','bim','teacher']
     if course not in allowed_courses:
        raise Http404
     else:
