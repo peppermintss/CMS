@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import Http404
 from account.models import Account
 from account.models import Account
+
 def faculty_detail_view(request,faculty):
     allowed_faculty = ['csit','bim','teacher']
     if faculty not in allowed_faculty:

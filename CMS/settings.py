@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'account',
     'phonenumber_field',
-    'course',
+    'faculty',
     'tailwind',
     'theme',
     'django_browser_reload',

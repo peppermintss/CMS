@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path,include
 from account.views import register_page,dashboard,add_account
 from django.contrib.auth.views import LoginView, LogoutView
-from course.views import faculty_detail_view,get_students_by_semester
+from faculty.views import faculty_detail_view,get_students_by_semester
 
 urlpatterns = [
     path('admin/', admin.site.urls),
