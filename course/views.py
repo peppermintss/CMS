@@ -1,27 +1,30 @@
 from django.shortcuts import render
 from django.http import Http404
-
 from account.models import Account
-def course_detail_view(request,course):
-    allowed_courses = ['csit','bim','teacher']
-    if course not in allowed_courses:
+from account.models import Account
+def faculty_detail_view(request,faculty):
+    allowed_faculty = ['csit','bim','teacher']
+    if faculty not in allowed_faculty:
        raise Http404
     else:
         context= {
-            'course': course,
+            'faculty': faculty,
             'semesters': range(1,9)
         }
-        
-        return render(request,"course_detail.html",context=context)
+        if faculty == "teacher":
+           teachers = Account.objects.filter(faculty='teacher')
+           
+           return render (request,"teacher_list.html",{'teachers':teachers})
+        return render(request,"faculty_detail.html",context=context)
 
 
-def get_students_by_semester(request,course,semester):
+def get_students_by_semester(request,faculty,semester):
    if semester > 8:
     raise Http404
    else:
-        students = Account.objects.filter(faculty=course).filter(semester=semester)
+        students = Account.objects.filter(faculty=faculty).filter(semester=semester)
         context={
-            'faculty' : course,
+            'faculty' : faculty,
             'students':students,
             'semester':semester
         }
