@@ -1,10 +1,10 @@
-from django.shortcuts import render,redirect, HttpResponse
+from django.shortcuts import render,redirect
 from .forms import CreateUserForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Group
 import random
-from django.http import Http404
 from django.core.exceptions import PermissionDenied
+from faculty.models import Course
 #OO LOOK AT THIS IF ELSE LADDER OO ITS NOT GOOD PRACTISE OOO SO SCARY I CRY
 
 @login_required
@@ -12,7 +12,9 @@ def dashboard(request):
     group = request.user.groups.all()[0]
     group = str(group)
     if group == "admin":
-        return render(request,"adash.html")
+        courses = Course.objects.all()
+
+        return render(request,"adash.html",{'courses':courses})
     elif group=="teacher":
         return render(request,'tdash.html')
     else:
@@ -54,7 +56,7 @@ def add_account(request,faculty,semester):
             last_name = form.cleaned_data ['last_name']
             phone_number = form.cleaned_data['phone_number']
             
-            new_account.username = f"{first_name + last_name + str(random.randint(1,100))}"
+            new_account.username = f"{first_name + last_name + str(random.randint(1,100))}".lower()
             new_account.set_password(str(phone_number))
             new_account.faculty = faculty
             new_account.semester = semester
