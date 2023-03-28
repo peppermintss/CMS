@@ -40,12 +40,10 @@ def register_page(request,methods=['GET','POST']):
 #This function is very very ugly but it works. Maybe override the save() method instead and make it cleaner?
 
 
-
-# Create your views here.
 def add_account(request,faculty,semester):
     if not get_referer(request):
         raise PermissionDenied
-    
+    print(faculty,semester)
     form = CreateUserForm
     if request.method == "POST":
         group = "teacher" if faculty=="teacher" else "student"
