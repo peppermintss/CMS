@@ -1,7 +1,7 @@
 from django.forms import ModelForm
-from .models import Course
+from .models import Faculty
 
-class CourseAddForm(ModelForm):
+class FacultyAddForm(ModelForm):
     class Meta:
-        model = Course
+        model = Faculty
         fields= ['name']
