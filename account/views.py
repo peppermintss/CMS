@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Group
 import random
 from django.core.exceptions import PermissionDenied
-from faculty.models import Course
+from faculty.models import Faculty
 #OO LOOK AT THIS IF ELSE LADDER OO ITS NOT GOOD PRACTISE OOO SO SCARY I CRY
 
 @login_required
@@ -12,7 +12,7 @@ def dashboard(request):
     group = request.user.groups.all()[0]
     group = str(group)
     if group == "admin":
-        courses = Course.objects.all()
+        courses = Faculty.objects.all()
 
         return render(request,"adash.html",{'courses':courses})
     elif group=="teacher":

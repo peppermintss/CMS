@@ -1,12 +1,12 @@
 from django.shortcuts import render
 from django.http import Http404
 from account.models import Account
-from .forms import CourseAddForm
-from .models import Course
+from .forms import FacultyAddForm
+from .models import Faculty
 
 def faculty_detail_view(request,faculty):
-    allowed_faculty = [course.name.lower() for course in Course.objects.all()]
-    print(allowed_faculty)
+    allowed_faculty = [faculty.name.lower() for faculty in Faculty.objects.all()]
+    
     if faculty not in allowed_faculty:
        raise Http404
     else:
@@ -34,9 +34,9 @@ def get_students_by_semester(request,faculty,semester):
         return render(request,"student-by-semester.html",context=context)
 
 def add_course(request):
-    form = CourseAddForm
+    form = FacultyAddForm
     if request.method == 'POST':
-        form = CourseAddForm(request.POST)
+        form = FacultyAddForm(request.POST)
         if form.is_valid():
             form.save()
     return render(request,"add_course.html",{'form':form})
