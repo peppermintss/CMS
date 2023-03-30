@@ -3,7 +3,11 @@ from django.http import Http404
 from account.models import Account
 from .forms import FacultyAddForm
 from .models import Faculty
+from django.contrib.auth.decorators import login_required,user_passes_test
+from account.perm_checkers import verify_admin_access
 
+@login_required
+@user_passes_test(verify_admin_access)
 def faculty_detail_view(request,faculty):
     allowed_faculty = [faculty.name.lower() for faculty in Faculty.objects.all()]
     
@@ -20,7 +24,8 @@ def faculty_detail_view(request,faculty):
            return render (request,"teacher_list.html",{'teachers':teachers})
         return render(request,"faculty_detail.html",context=context)
 
-
+@login_required
+@user_passes_test(verify_admin_access)
 def get_students_by_semester(request,faculty,semester):
    if semester > 8:
     raise Http404
@@ -32,7 +37,9 @@ def get_students_by_semester(request,faculty,semester):
             'semester':semester
         }
         return render(request,"student-by-semester.html",context=context)
-
+   
+@login_required
+@user_passes_test(verify_admin_access)
 def add_course(request):
     form = FacultyAddForm
     if request.method == 'POST':

@@ -1,18 +1,21 @@
 from django.shortcuts import render,redirect
 from .forms import CreateUserForm
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required,user_passes_test
 from django.contrib.auth.models import Group
 import random
 from django.core.exceptions import PermissionDenied
 from faculty.models import Faculty
+from .perm_checkers import verify_admin_access
 #OO LOOK AT THIS IF ELSE LADDER OO ITS NOT GOOD PRACTISE OOO SO SCARY I CRY
+
+
 
 @login_required
 def dashboard(request):
     group = request.user.groups.all()[0]
     group = str(group)
     if group == "admin":
-        courses = Faculty.objects.all()
+        courses =  Faculty.objects.all()
 
         return render(request,"adash.html",{'courses':courses})
     elif group=="teacher":
@@ -23,7 +26,7 @@ def dashboard(request):
    
 #why createuserform tho? idk i forgot why. future me don't touch it unless you are 100% 
 #sure on the fix.
-
+@login_required
 def register_page(request,methods=['GET','POST']):
     form = CreateUserForm()
     if request.method == "POST":
@@ -42,12 +45,15 @@ def register_page(request,methods=['GET','POST']):
 #This function is very very ugly but it works. Maybe override the save() method instead and make it cleaner?
 
 
+@user_passes_test(verify_admin_access)
 def add_account(request,faculty,semester):
+    print('ran')
     if not get_referer(request):
         raise PermissionDenied
-    print(faculty,semester)
+    
     form = CreateUserForm
     if request.method == "POST":
+        
         group = "teacher" if faculty=="teacher" else "student"
         form= CreateUserForm(request.POST)
         if form.is_valid():
@@ -81,3 +87,5 @@ def get_referer(request):
     if not referer:
         return None
     return referer
+
+
