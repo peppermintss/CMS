@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,HttpResponse
 from .forms import CreateUserForm
 from django.contrib.auth.decorators import login_required,user_passes_test
 from django.contrib.auth.models import Group
@@ -80,7 +80,10 @@ def add_account(request,faculty,semester):
         'faculty':faculty,
         'semester':semester,
         }
+    
     return render (request,'register.html',context)
+
+
 
 def get_referer(request):
     referer = request.META.get('HTTP_REFERER')

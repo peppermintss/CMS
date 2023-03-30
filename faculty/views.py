@@ -27,7 +27,8 @@ def faculty_detail_view(request,faculty):
 @login_required
 @user_passes_test(verify_admin_access)
 def get_students_by_semester(request,faculty,semester):
-   if semester > 8:
+   allowed_faculty = [faculty.name.lower() for faculty in Faculty.objects.all()]
+   if semester > 8 or faculty not in allowed_faculty:
     raise Http404
    else:
         students = Account.objects.filter(faculty=faculty).filter(semester=semester)

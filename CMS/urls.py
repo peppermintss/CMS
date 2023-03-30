@@ -20,17 +20,18 @@ from django.contrib.auth.views import LoginView, LogoutView
 from faculty.views import faculty_detail_view,get_students_by_semester,add_course
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+     path('admin/', admin.site.urls),
     path('register/',register_page,name="register-page"),
-    path('',LoginView.as_view(template_name="login.html",redirect_authenticated_user= True),name="home-page"),
-    path('logout/',LogoutView.as_view(template_name="logout.html"),name="logout-page"),
-    path('dashboard/',dashboard,name='dashboard'),
+     path('',LoginView.as_view(template_name="login.html",redirect_authenticated_user= True),name="home-page"),
+     path('logout/',LogoutView.as_view(template_name="logout.html"),name="logout-page"),
+     path('dashboard/',dashboard,name='dashboard'),
     
-    path('<str:faculty>/',faculty_detail_view,name="faculty-detail-view"),
-    path('<str:faculty>/<int:semester>/',get_students_by_semester,name="students-by-semester"),
-    path('add_account/<str:faculty>/<int:semester>',add_account,name="add-account"),
+     path('<str:faculty>/',faculty_detail_view,name="faculty-detail-view"),
+     path('show/<str:faculty>/<int:semester>/',get_students_by_semester,name="students-by-semester"),
+     path('add_account/<str:faculty>/<int:semester>/',add_account,name="add-account"),
+    
     path('faculty/add_course/',add_course,name="add-course"),
-    path("__reload__/", include("django_browser_reload.urls")),
+     path("__reload__/", include("django_browser_reload.urls")),
     
   
 ]
