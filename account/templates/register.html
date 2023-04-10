@@ -1,66 +1,53 @@
-{% include 'navbar.html' %}
-{% load static %}
+{% include 'navbar.html' %} {% load static %}
 
 <link rel="stylesheet" href="{% static 'images/custom_style.css' %}">
 
- 
-    
-    <div class="h-screen flex flex-col justify-center items-center">
-      <div class="container mx-auto ">
+
+
+<div class="h-screen flex flex-col justify-center items-center">
+    <div class="container mx-auto ">
         <div class="flex flex-col lg:flex-row w-10/12 lg:w-8/12 bg-white rounded-xl mx-auto shadow-lg overflow-hidden">
-          <div class="w-full lg:w-1/2 flex flex-col items-center justify-center p-12 bg-no-repeat bg-cover bg-center" id="modal-id">
-            <!-- <img src="{% static 'images/bg-register.jpg' %}" alt="Background image"> -->
-            <h1 class="text-black text-3xl mb-3">Welcome</h1>
-            
-            <div>
-              <p class="text-black">Personalize Your Experience </p>
+            <div class="w-full lg:w-1/2 flex flex-col items-center justify-center p-12 bg-no-repeat bg-cover bg-center" id="modal-id">
+                <!-- <img src="{% static 'images/bg-register.jpg' %}" alt="Background image"> -->
+                <h1 class="text-black text-3xl mb-3">Welcome</h1>
+
+                <div>
+                    <p class="text-black">Personalize Your Experience </p>
+                </div>
             </div>
-          </div>
-          <div class="w-full lg:w-1/2 py-8 px-8">
-            <h2  class="text-3xl mb-4">Register</h2>
-            <p class="mb-4 text-xl">
-              {% if faculty == 'teacher' %}
-              Register a new teacher.
-              {% else %}
-              Register a new student.
-              {% endif %}
-            </p>
-            <form method="POST" hx-post="/add_account/{{faculty}}/{{semester}}" hx-target="body">
-              {% csrf_token %}
-              <div class="grid grid-cols-2 gap-5">
-               
-                {{form.first_name.label}}
-                {{form.first_name}}
-                {{form.last_name.label}}
-                {{form.last_name}}
-              </div>
-              <div class="mt-5">
-                {{form.email.label}}
-                {{form.email}}
-              </div>
-              
-              <div class="mt-5">
-                {{form.phone_number.label}}
-                {{form.phone_number}}
-              </div>
-             
-             
-              <div class="mt-5">
-                {{form.address.label}}
-                {{form.address}}
-              </div>
-             
+            <div class="w-full lg:w-1/2 py-8 px-8">
+                <h2 class="text-3xl mb-4">Register</h2>
+                <p class="mb-4 text-xl">
+                    {% if faculty == 'teacher' %} Register a new teacher. {% else %} Register a new student. {% endif %}
+                </p>
+                <form method="POST" hx-post="/add_account/{{faculty}}/{{semester}}/" hx-target="body">
+                    {% csrf_token %}
+                    <div class="grid grid-cols-2 gap-5">
+
+                        {{form.first_name.label}} {{form.first_name}} {{form.last_name.label}} {{form.last_name}}
+                    </div>
+                    <div class="mt-5">
+                        {{form.email.label}} {{form.email}}
+                    </div>
+
+                    <div class="mt-5">
+                        {{form.phone_number.label}} {{form.phone_number}}
+                    </div>
 
 
-              <div class="mt-5">
-                <button type="submit"  hx-target="body" class="w-full bg-teal-700 hover:bg-teal-600 py-3 text-center text-white rounded-lg">Register Now</button>
-              </div>
-            </form>
-          </div>
+                    <div class="mt-5">
+                        {{form.address.label}} {{form.address}}
+                    </div>
+
+
+
+                    <div class="mt-5">
+                        <button type="submit" hx-target="body" class="w-full bg-teal-700 hover:bg-teal-600 py-3 text-center text-white rounded-lg">Register Now</button>
+                    </div>
+                </form>
+            </div>
         </div>
-      </div>
     </div>
-    </div>  
-    </div>
-    
-    
+</div>
+</div>
+</div>
