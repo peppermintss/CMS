@@ -15,10 +15,10 @@ from django.contrib.auth.models import Group
 # NOT THE BEST FIX BUT IT WORKS AS INTENDED.
 
 
-groups_to_create = ["student", "teacher", "admin"]
-for group_name in groups_to_create:
-    Group.objects.get_or_create(name=group_name)
-print("Done")
+# groups_to_create = ["student", "teacher", "admin"]
+# for group_name in groups_to_create:
+#     Group.objects.get_or_create(name=group_name)
+# print("Done")
 
 
 urlpatterns = [
