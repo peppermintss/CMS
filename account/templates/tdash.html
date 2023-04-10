@@ -1,2 +1,6 @@
 {% include 'navbar.html' %}
-<h1> THIS IS THE TEACHER DASHBOARD</h1>
+
+<h1> Hello {{user.first_name}} {{user.last_name}}</h1>
+
+<h1> YOUR SUBJECTS</h1>
+{% for subject in subjects %} {{subject}} {% endfor %}

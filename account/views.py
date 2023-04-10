@@ -7,6 +7,7 @@ from django.core.exceptions import PermissionDenied
 from faculty.models import Faculty
 from .perm_checkers import verify_admin_access
 from faculty.models import Subject
+from .models import Account
 
 # OO LOOK AT THIS IF ELSE LADDER OO ITS NOT GOOD PRACTISE OOO SO SCARY I CRY
 
@@ -21,7 +22,10 @@ def dashboard(request):
         context = {"courses": courses}
         return render(request, "adash.html", context=context)
     elif group == "teacher":
-        return render(request, "tdash.html")
+        teacher_obj = Account.objects.get(username=request.user.username)
+        subjects = Subject.objects.filter(teacher=teacher_obj)
+        context = {"subjects": subjects}
+        return render(request, "tdash.html", context=context)
     else:
         subjects = Subject.objects.filter(semester=request.user.semester)
         context = {"subjects": subjects}
