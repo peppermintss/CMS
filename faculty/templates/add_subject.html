@@ -1,0 +1,4 @@
+<form method="POST">
+    {% csrf_token %} {{form}}
+    <button hx-post="/faculty/add_subject/{{faculty}}/{{semester}}" hx-target="body"> Add </button>
+</form>

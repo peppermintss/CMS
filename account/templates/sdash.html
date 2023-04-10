@@ -1,3 +1,10 @@
-{% include 'navbar.html' %}
+{% include 'navbar.html' %} Hello {{user.first_name}} {{user.last_name}}.
+<br> {{user.faculty}} {{user.semester}} <sup>th</sup> semester
+<br> {{user.phone_number}}
+<br> {{user.address}}
 
-<h1> THIS IS THE STUDENT DASHBOARD</h1>
+<br> <br>
+<h1> YOUR SUBJECTS</h1>
+{% for subject in subjects %} {{subject}} {% endfor %}
+
+<br>

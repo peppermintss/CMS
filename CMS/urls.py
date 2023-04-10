@@ -2,7 +2,12 @@ from django.contrib import admin
 from django.urls import path, include
 from account.views import register_page, dashboard, add_account
 from django.contrib.auth.views import LoginView, LogoutView
-from faculty.views import faculty_detail_view, get_students_by_semester, add_course
+from faculty.views import (
+    faculty_detail_view,
+    get_students_by_semester,
+    add_course,
+    add_subject,
+)
 from django.contrib.auth.models import Group
 
 
@@ -36,5 +41,10 @@ urlpatterns = [
     ),
     path("add_account/<str:faculty>/<int:semester>/", add_account, name="add-account"),
     path("faculty/add_course/", add_course, name="add-course"),
+    path(
+        "faculty/add_subject/<str:faculty>/<int:semester>",
+        add_subject,
+        name="add-subject",
+    ),
     path("__reload__/", include("django_browser_reload.urls")),
 ]
