@@ -56,6 +56,7 @@ def add_course(request):
 
 
 def add_subject(request, faculty, semester):
+    faculty = faculty.lower()
     form = SubjectAddForm
     if request.method == "POST":
         print("posted")
@@ -68,3 +69,10 @@ def add_subject(request, faculty, semester):
             return redirect(request.headers["Referer"])
     context = {"form": form, "faculty": faculty, "semester": semester}
     return render(request, "add_subject.html", context=context)
+
+
+def subject_detail_view(request, subject):
+    print(subject)
+    subject_obj = Subject.objects.get(name=subject.lower())
+    print(subject_obj)
+    return render(request, "subject_detail.html")
