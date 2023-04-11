@@ -8,6 +8,7 @@ from faculty.views import (
     get_students_by_semester,
     add_course,
     add_subject,
+    subject_detail_view,
 )
 
 
@@ -40,5 +41,6 @@ urlpatterns = [
         add_subject,
         name="add-subject",
     ),
+    path("subject/<str:subject>", subject_detail_view, name="subject-detail"),
     path("__reload__/", include("django_browser_reload.urls")),
 ]
