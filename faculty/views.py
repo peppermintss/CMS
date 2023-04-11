@@ -71,8 +71,12 @@ def add_subject(request, faculty, semester):
     return render(request, "add_subject.html", context=context)
 
 
+# WHEN PASSING STRING IN CONTEXT MAKE SURE TO WRAP IT IN STR() OR ELSE IT WONT WORK.
 def subject_detail_view(request, subject):
-    print(subject)
+    group = request.user.groups.all()[0]
     subject_obj = Subject.objects.get(name=subject.lower())
-    print(subject_obj)
-    return render(request, "subject_detail.html")
+    context = {"subject": subject_obj, "group": str(group)}
+    if request.method == "POST":
+        subject_obj.notice = request.POST["notice"]
+        subject_obj.save()
+    return render(request, "subject_detail.html", context=context)

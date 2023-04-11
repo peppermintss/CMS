@@ -19,6 +19,7 @@ class Subject(models.Model):
         on_delete=models.DO_NOTHING,
     )
     semester = models.IntegerField()
+    notice = models.CharField(max_length=250, null=True)
 
     def __str__(self):
         return self.name.lower()

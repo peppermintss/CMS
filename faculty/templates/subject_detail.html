@@ -1,1 +1,16 @@
-<h1> MUCH SUBJECT VERY NICE</h1>
+<h1> {{subject.name}} </h1>
+
+{{subject.teacher.first_name}} {{subject.teacher.last_name}}
+
+
+
+<p>Taught in : {{subject.faculty}} {{subject.semester}} <sup>th</sup> Semester
+    <br>{{subject.notice}}
+
+    <br> {% if group == "admin" %}
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="notice">
+        <button type="submit">Submit</button>
+    </form>
+    {% endif %}
