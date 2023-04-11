@@ -8,6 +8,7 @@ from faculty.models import Faculty
 from .perm_checkers import verify_admin_access
 from faculty.models import Subject
 from .models import Account
+from django.contrib.auth.views import LoginView
 
 # OO LOOK AT THIS IF ELSE LADDER OO ITS NOT GOOD PRACTISE OOO SO SCARY I CRY
 

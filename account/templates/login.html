@@ -1,35 +1,39 @@
-
 <!DOCTYPE html>
 <html>
-    <head>
-        <title> Log in</title>
-        <script src="https://cdn.tailwindcss.com"></script>
-    </head>
-    <body>
-     {% include 'navbar.html' %}
 
-<div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
-  <div class="mx-auto max-w-lg text-center">
-    <h1 class="text-2xl font-bold sm:text-3xl">Log in!</h1>
+<head>
+    <title> Log in</title>
 
-    <p class="mt-4 text-gray-500">
-      Login to Manage Your College Experience
-    </p>
-  </div>
+</head>
 
-  <form method="POST" class="mx-auto mt-8 mb-0 max-w-md space-y-4">
-    {% csrf_token %}
-    <div>
-      <label for="email" class="sr-only">Username</label>
+<body>
+    {% include 'navbar.html' %} {% if form.errors %}
+    <div class="alert alert-danger">
+        {% for field_errors in form.errors.values %} {% for error in field_errors %}
+        <p>{{ error }}</p>
+        {% endfor %} {% endfor %}
+    </div>
+    {% endif %}
 
-      <div class="relative">
-        <input
-          name="username"
-          class="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm"
-          placeholder="Enter username"
-        />
 
-        <span class="absolute inset-y-0 right-0 grid place-content-center px-4">
+    <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-lg text-center">
+            <h1 class="text-2xl font-bold sm:text-3xl">Log in!</h1>
+
+            <p class="mt-4 text-gray-500">
+                Login to Manage Your College Experience
+            </p>
+        </div>
+
+        <form method="POST" class="mx-auto mt-8 mb-0 max-w-md space-y-4">
+            {% csrf_token %}
+            <div>
+                {{form.username.label}}
+
+                <div class="relative">
+                    {{form.username}}
+
+                    <span class="absolute inset-y-0 right-0 grid place-content-center px-4">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="h-4 w-4 text-gray-400"
@@ -45,21 +49,16 @@
             />
           </svg>
         </span>
-      </div>
-    </div>
+                </div>
+            </div>
 
-    <div>
-      <label for="password" class="sr-only">Password</label>
+            <div>
+                {{form.password.label}}
 
-      <div class="relative">
-        <input
-        name="password"
-          type="password"
-          class="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm"
-          placeholder="Enter password"
-        />
+                <div class="relative">
+                    {{form.password}}
 
-        <span class="absolute inset-y-0 right-0 grid place-content-center px-4">
+                    <span class="absolute inset-y-0 right-0 grid place-content-center px-4">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="h-4 w-4 text-gray-400"
@@ -81,25 +80,22 @@
             />
           </svg>
         </span>
-      </div>
-    </div>
+                </div>
+            </div>
 
-    <div class="flex items-center justify-between">
-      <p class="text-sm text-gray-500">
-        No account?
-        <a class="underline" href="">Sign up</a>
-      </p>
+            <div class="flex items-center justify-between">
+                <p class="text-sm text-gray-500">
+                    No account?
+                    <a class="underline" href="">Sign up</a>
+                </p>
 
-      <button
-        type="submit"
-        class="inline-block rounded-lg bg-blue-500 px-5 py-3 text-sm font-medium text-white"
-      >
+                <button type="submit" class="inline-block rounded-lg bg-blue-500 px-5 py-3 text-sm font-medium text-white">
         Sign in
       </button>
+            </div>
+        </form>
     </div>
-  </form>
-</div>
 
-    </body>
+</body>
+
 </html>
-

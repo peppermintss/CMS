@@ -2,23 +2,17 @@ from django.contrib import admin
 from django.urls import path, include
 from account.views import register_page, dashboard, add_account
 from django.contrib.auth.views import LoginView, LogoutView
+
 from faculty.views import (
     faculty_detail_view,
     get_students_by_semester,
     add_course,
     add_subject,
 )
-from django.contrib.auth.models import Group
 
 
 # THIS FILE IS IMPORTED ONLY ONCE WHEN THE SERVER RUNS. SO THIS BLOCK OF CODE WILL RUN ONLY ONCE WHEN THE SERVER IS STARTED. PROBABLY
 # NOT THE BEST FIX BUT IT WORKS AS INTENDED.
-
-
-# groups_to_create = ["student", "teacher", "admin"]
-# for group_name in groups_to_create:
-#     Group.objects.get_or_create(name=group_name)
-# print("Done")
 
 
 urlpatterns = [
