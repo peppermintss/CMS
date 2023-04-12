@@ -63,6 +63,7 @@ def add_subject(request, faculty, semester):
         form = SubjectAddForm(request.POST)
         if form.is_valid():
             new_subject = form.save(commit=False)
+            new_subject.name = new_subject.name.lower()
             new_subject.faculty = Faculty.objects.get(name=faculty.upper())
             new_subject.semester = semester
             new_subject.save()

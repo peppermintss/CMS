@@ -1,11 +1,14 @@
 {% include 'navbar.html' %}
 <div class="pt-2 text-center ">
-  <span class="font-semibold px-5 py-5 rounded-md text-2xl">Welcome {{user.first_name}} {{user.last_name}}</span>
-  <span><br> {{user.faculty}} {{user.semester}} <sup>th</sup> semester</span>
+    <span class="font-semibold px-5 py-5 rounded-md text-2xl">Welcome {{user.first_name}} {{user.last_name}}</span>
+    <span><br> {{user.faculty}} {{user.semester}} <sup>th</sup> semester</span>
 </div>
 
 <br> <br>
 <h1 class="text-lg font-semibold"> YOUR SUBJECTS</h1>
-{% for subject in subjects %} {{subject}} {% endfor %}
+{% for subject in subjects %}
+
+
+<a href="{% url 'subject-detail' subject %}">{{subject}}</a> {% endfor %}
 
 <br>

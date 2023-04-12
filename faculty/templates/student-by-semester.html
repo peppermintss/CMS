@@ -91,7 +91,13 @@
         </div>
     </div>
 </div>
-{% for subject in subjects %} {{subject}} {% endfor %}
+{% for subject in subjects %}
+
+<a href="{% url 'subject-detail' subject %}">
+
+{{subject}}
+
+</a> {% endfor %}
 
 <br>
 <br>
