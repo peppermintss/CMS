@@ -30,47 +30,39 @@
   </tbody>
 </table> -->
 
-
-
-<div class="flex pt-8">
-    <div class="w-15% pr-2">
-        <div class="py-2 bg-gray-100 rounded text-teal-600" style="max-width: none;">
-            <div class="px-4 cursor-pointer">
-                <div class="flex items-center justify-between p-2 ">
-                    <div class="flex justify-between items-center w-full">
-                        <div class="flex items-center">
-                            <span class=" text-sm font-semibold hover:font-bold">Semester 1</span>
-                        </div><span class="text-xs"></span>
-                    </div><span class="pl-4"></span>
+<div>
+    <div class=" h-auto w-full flex items-center justify-center pt-5 mb-20 lg:mb-0">
+        <div class="bg-gray-50 h-auto lg:p-6 p-4 flex justify-center items-center w-full max-w-[95%] lg:max-w-[1200px] shadow-lg">
+            <div class="flex-col flex md:flex-row py-10 lg:py-0 mx-5 gap-6 md:mx-0 md:gap-0 md:justify-evenly w-full">
+                <div class="flex items-center gap-4">
+                    <h1 class="max-w-[100px] text-[20px]font-bold text-xl hover:text-teal-500 cursor-pointer">Semesters</h1>
                 </div>
-            </div>
-        </div>
+                <div class="flex items-center gap-4">
 
-        <div class="py-2 bg-gray-100 rounded text-teal-600" style="max-width: none;">
-            <div class="px-4 cursor-pointer">
-                <div class="flex items-center justify-between p-2 hover:text-xl">
-                    <div class="flex justify-between items-center w-full">
-                        <div class="flex items-center">
-                            <button hx-get="/add_account/{{faculty}}/{{semester}}" hx-target="body" class="rounded-md bg-gray-100 text-sm font-medium text-teal-600 hover:font-bold">Add account</button>
-                        </div><span class="text-xs"></span>
-                    </div><span class="pl-4"></span>
+                    <h1 class="max-w-[150px] text-[20px]font-bold text-xl hover:text-teal-500 cursor-pointer">Subjects</h1>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button hx-get="/add_account/{{faculty}}/{{semester}}" hx-target="body" class="max-w-[150px] text-[20px]font-bold text-xl hover:text-teal-500">Add account</button>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button hx-get="/faculty/add_subject/{{faculty}}/{{semester}}" hx-target="body" class="max-w-[150px] text-[20px]font-bold text-xl hover:text-teal-500"> Add subject </button>
                 </div>
             </div>
         </div>
     </div>
-    <div class="flex-grow">
-        <div class="flex justify-center">
+    <div>
+        <div class="flex justify-center pt-5">
             <div class="w-full lg:w-3/4 xl:w-2/3">
                 <table class="table-auto border border-gray-300 mx-auto">
                     <thead>
                         <tr class="bg-gray-100">
-                            <th class="px-4 py-2 border-r border-gray-400">Username</th>
-                            <th class="px-4 py-2 border-r border-gray-400">First Name</th>
-                            <th class="px-4 py-2 border-r border-gray-400">Last Name</th>
-                            <th class="px-4 py-2 border-r border-gray-400">Email</th>
-                            <th class="px-4 py-2 border-r border-gray-400">Phone Number</th>
-                            <th class="px-4 py-2 border-r border-gray-400">Address</th>
-                            <th class="px-4 py-2 border-r border-gray-400">Faculty</th>
+                            <th class="px-8 py-2 border-r border-gray-400">Username</th>
+                            <th class="px-8 py-2 border-r border-gray-400">First Name</th>
+                            <th class="px-8 py-2 border-r border-gray-400">Last Name</th>
+                            <th class="px-8 py-2 border-r border-gray-400">Email</th>
+                            <th class="px-8 py-2 border-r border-gray-400">Phone Number</th>
+                            <th class="px-8 py-2 border-r border-gray-400">Address</th>
+                            <th class="px-8 py-2 border-r border-gray-400">Faculty</th>
                         </tr>
                     </thead>
                     <tbody>
