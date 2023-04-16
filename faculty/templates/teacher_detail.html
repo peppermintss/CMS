@@ -1,0 +1,35 @@
+{% include 'navbar.html' %}
+
+<div id="table-div" class="flex justify-center pt-5 mt-10">
+    <div class="w-full lg:w-3/4 xl:w-2/3">
+        <table class="table-auto border border-gray-300 mx-auto">
+            <thead>
+                <tr class="bg-gray-100">
+                    <th class="px-8 py-2 border-r border-gray-400">Username</th>
+                    <th class="px-8 py-2 border-r border-gray-400">First Name</th>
+                    <th class="px-8 py-2 border-r border-gray-400">Last Name</th>
+                    <th class="px-8 py-2 border-r border-gray-400">Email</th>
+                    <th class="px-8 py-2 border-r border-gray-400">Phone Number</th>
+                    <th class="px-8 py-2 border-r border-gray-400">Address</th>
+                    <th class="px-8 py-2 border-r border-gray-400">Faculty</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for teacher in teachers %}
+                <tr class="hover:bg-gray-50">
+                    <td class="border px-4 py-2">{{teacher.username}}</td>
+                    <td class="border px-4 py-2">{{teacher.first_name}}</td>
+                    <td class="border px-4 py-2">{{teacher.last_name}}</td>
+                    <td class="border px-4 py-2">{{teacher.email}}</td>
+                    <td class="border px-4 py-2">{{teacher.phone_number}}</td>
+                    <td class="border px-4 py-2">{{teacher.address}}</td>
+                    <td class="border px-4 py-2">{{teacher.faculty}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="flex items-center gap-4">
+    <button hx-get="/add_account/teacher/0" hx-target="body" class="max-w-[150px] text-[20px]font-bold text-xl hover:text-teal-500">Add account</button>
+</div>
