@@ -40,6 +40,7 @@ def get_students_by_semester(request, faculty, semester):
             "students": students,
             "semester": semester,
             "subjects": subjects,
+            "semesters": range(1, 9),
         }
         return render(request, "student-by-semester.html", context=context)
 
