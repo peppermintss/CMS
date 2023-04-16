@@ -4,7 +4,6 @@ from account.views import register_page, dashboard, add_account
 from django.contrib.auth.views import LoginView, LogoutView
 
 from faculty.views import (
-    faculty_detail_view,
     get_students_by_semester,
     add_course,
     add_subject,
@@ -29,7 +28,6 @@ urlpatterns = [
         "logout/", LogoutView.as_view(template_name="logout.html"), name="logout-page"
     ),
     path("dashboard/", dashboard, name="dashboard"),
-    path("<str:faculty>/", faculty_detail_view, name="faculty-detail-view"),
     path(
         "show/<str:faculty>/<int:semester>/",
         get_students_by_semester,
