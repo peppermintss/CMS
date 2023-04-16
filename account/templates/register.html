@@ -1,6 +1,12 @@
-{% include 'navbar.html' %} {% load static %}
+ {% include 'navbar.html' %} {% load static %}
+
+
+
+
 
 <link rel="stylesheet" href="{% static 'images/custom_style.css' %}">
+
+
 
 
 
@@ -20,7 +26,7 @@
                 <p class="mb-4 text-xl">
                     {% if faculty == 'teacher' %} Register a new teacher. {% else %} Register a new student. {% endif %}
                 </p>
-                <form method="POST" hx-post="/add_account/{{faculty}}/{{semester}}/" hx-target="body">
+                <form method="POST" action="/add_account/{{faculty}}/{{semester}}/">
                     {% csrf_token %}
                     <div class="grid grid-cols-2 gap-5">
 

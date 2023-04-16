@@ -1,55 +1,44 @@
-{% load tailwind_tags %}
-{% load static %}
+{% load tailwind_tags %} {% load static %}
 <link rel="stylesheet" href="{% static 'images/custom_style.css' %}">
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html>
-    <head>
-      {% tailwind_css %} 
-          <script src="https://unpkg.com/htmx.org@1.8.6"></script>
 
-    </head>
-   <body>
+<head>
+    {% tailwind_css %}
+    <script src="https://unpkg.com/htmx.org@1.8.6"></script>
+    <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
+
+</head>
+
+<body>
     <header aria-label="Site Header" class="bg-white">
-  <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 mt-3">
-    <div class="flex h-16 items-center justify-between">
-      <div class="flex-1 md:flex md:items-center md:gap-12">
-        <a href="{% url 'home-page' %}">
-          <img src="{% static 'images/lg.png' %}">
-        </a>
-      </div>
-        <div class="flex items-center gap-4">
-          <div class="sm:flex sm:gap-4">
-            {% if user.is_authenticated %}
-            <a
-              class="rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white shadow"
-              href="{% url 'logout-page' %}"
-            >
+        <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 mt-3">
+            <div class="flex h-16 items-center justify-between">
+                <div class="flex-1 md:flex md:items-center md:gap-12">
+                    <a href="{% url 'home-page' %}">
+                        <img src="{% static 'images/lg.png' %}">
+                    </a>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="sm:flex sm:gap-4">
+                        {% if user.is_authenticated %}
+                        <a class="rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white shadow" href="{% url 'logout-page' %}">
               Logout
-            </a>
-            {% else %}
+            </a> {% else %}
 
-              <a
-              class="rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white shadow"
-              href="{% url 'logout-page' %}"
-            >
+                        <a class="rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white shadow" href="{% url 'logout-page' %}">
               Login
-            </a>
-            {% endif %}
-            <div class="hidden sm:flex">
-              <a
-                class="rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-teal-600"
-                href="{% url 'dashboard' %}"
-              >
+            </a> {% endif %}
+                        <div class="hidden sm:flex">
+                            <a class="rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-teal-600" href="{% url 'dashboard' %}">
                 Dashboard
               </a>
-            </div>
+                        </div>
 
-          </div>
+                    </div>
 
-          <div class="block md:hidden">
-            <button
-              class="rounded bg-gray-100 p-2 text-gray-600 transition hover:text-gray-600/75"
-            >
+                    <div class="block md:hidden">
+                        <button class="rounded bg-gray-100 p-2 text-gray-600 transition hover:text-gray-600/75">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="h-5 w-5"
@@ -65,13 +54,13 @@
                 />
               </svg>
             </button>
-          </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
-</header>
+        </div>
+    </header>
 
-   </body>
-  
+</body>
+
 </html>

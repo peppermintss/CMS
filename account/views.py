@@ -36,7 +36,7 @@ def dashboard(request):
 # why createuserform tho? idk i forgot why. future me don't touch it unless you are 100%
 # sure on the fix.
 @login_required
-def register_page(request, methods=["GET", "POST"]):
+def register_page(request):
     form = CreateUserForm()
     if request.method == "POST":
         form = CreateUserForm(request.POST)
@@ -55,12 +55,12 @@ def register_page(request, methods=["GET", "POST"]):
 
 @user_passes_test(verify_admin_access)
 def add_account(request, faculty, semester):
-    print("ran")
     if not get_referer(request):
         raise PermissionDenied
 
     form = CreateUserForm
     if request.method == "POST":
+        print("posted here")
         group = "teacher" if faculty == "teacher" else "student"
         form = CreateUserForm(request.POST)
         if form.is_valid():
@@ -79,7 +79,7 @@ def add_account(request, faculty, semester):
             new_account.save()
             group = Group.objects.get(name=f"{group}")
             new_account.groups.add(group)
-            print(request.headers["Referer"])
+
             return redirect(request.headers["Referer"])
         else:
             print(form.errors)
