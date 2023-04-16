@@ -54,6 +54,7 @@
         <div id="table-div" class="flex justify-center pt-5">
             <div class="w-full lg:w-3/4 xl:w-2/3">
                 <table class="table-auto border border-gray-300 mx-auto">
+
                     <thead>
                         <tr class="bg-gray-100">
                             <th class="px-8 py-2 border-r border-gray-400">Username</th>
@@ -63,6 +64,7 @@
                             <th class="px-8 py-2 border-r border-gray-400">Phone Number</th>
                             <th class="px-8 py-2 border-r border-gray-400">Address</th>
                             <th class="px-8 py-2 border-r border-gray-400">Faculty</th>
+                            <th class="px-8 py-2 border-r border-gray-400">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -75,6 +77,12 @@
                             <td class="border px-4 py-2">{{student.phone_number}}</td>
                             <td class="border px-4 py-2">{{student.address}}</td>
                             <td class="border px-4 py-2">{{student.faculty}}</td>
+                            <td>
+                                <!-- <button hx-post="/delete_account/{{student.username}}" hx-target="#table-div">Delete</button> -->
+                                <a href="{% url 'delete-account' student.username%}">
+                                    Delete
+                                </a>
+                            </td>
                         </tr>
                         {% endfor %}
                     </tbody>

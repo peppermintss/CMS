@@ -8,7 +8,7 @@ from faculty.models import Faculty
 from .perm_checkers import verify_admin_access
 from faculty.models import Subject
 from .models import Account
-from django.contrib.auth.views import LoginView
+from django.views.decorators.csrf import csrf_exempt
 
 # OO LOOK AT THIS IF ELSE LADDER OO ITS NOT GOOD PRACTISE OOO SO SCARY I CRY
 
@@ -91,6 +91,17 @@ def add_account(request, faculty, semester):
     }
 
     return render(request, "register.html", context)
+
+
+@csrf_exempt
+def delete_account(request, username):
+    referer = get_referer(request)
+    if not referer:
+        raise PermissionDenied
+
+    Account.objects.get(username=username).delete()
+    print("Deleted")
+    return redirect(referer)
 
 
 def get_referer(request):

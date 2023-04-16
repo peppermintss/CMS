@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from account.views import register_page, dashboard, add_account
+from account.views import register_page, dashboard, add_account, delete_account
 from django.contrib.auth.views import LoginView, LogoutView
 
 from faculty.views import (
@@ -40,6 +40,7 @@ urlpatterns = [
         add_subject,
         name="add-subject",
     ),
+    path("delete_account/<str:username>", delete_account, name="delete-account"),
     path("subject/<str:subject>", subject_detail_view, name="subject-detail"),
     path("__reload__/", include("django_browser_reload.urls")),
 ]
