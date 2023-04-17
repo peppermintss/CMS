@@ -1,14 +1,43 @@
 {% include 'navbar.html' %}
-<div class="pt-2 text-center ">
+{% comment %} <div class="pt-2 text-center ">
     <span class="font-semibold px-5 py-5 rounded-md text-2xl">Welcome {{user.first_name}} {{user.last_name}}</span>
     <span><br> {{user.faculty}} {{user.semester}} <sup>th</sup> semester</span>
-</div>
+</div> {% endcomment %}
 
-<br> <br>
+{% comment %} <br> <br>
 <h1 class="text-lg font-semibold"> YOUR SUBJECTS</h1>
 {% for subject in subjects %}
 
 
 <a href="{% url 'subject-detail' subject %}">{{subject}}</a> {% endfor %}
 
-<br>
+<br> {% endcomment %}
+
+{% comment %}  {% endcomment %}
+
+<section class="h-auto pt-2 flex font-medium items-center justify-center w-full p-10">
+    <div class="grid gap-8">
+        <div class="grid content-center justify-items-center gap-3">
+            <div class=" break-all text-center">
+                <h1 class="text-3xl darktext font-bold text-center">Welcome {{user.first_name}} {{user.last_name}}</h1>
+                <span class="font-semi-bold text-lg"><br> {{user.faculty}} {{user.semester}} <sup>th</sup> semester</span>
+            </div>
+        </div>
+        <div class="grid grid-flow-row sm:grid-cols-2 gap-10 grid-cols-1 content-center justify-items-center lg:grid-cols-3 ">
+            <div class="bg-white hover:shadow-lg rounded-lg ">
+                <a class="relative block rounded-md border border-gray-100 p-8 shadow-xl w-[350px] h-[150px]" href="">
+                  <div class="mt-4 text-gray-500 sm:pr-8">
+                    <h3 class=" text-xl font-bold text-gray-900 text-center">Attendance</h3>
+                  </div>
+                </a>
+            </div>
+            <div class="bg-white hover:shadow-lg rounded-lg ">
+                <a class="relative block rounded-md border border-gray-100 p-8 shadow-xl w-[350px] h-[150px]" href="">
+                  <div class="mt-4 text-gray-500 sm:pr-8">
+                    <h3 class=" text-xl font-bold text-gray-900 text-center">Notice Board</h3>
+                  </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>

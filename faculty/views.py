@@ -13,7 +13,7 @@ def get_students_by_semester(request, faculty, semester):
     if faculty == "teacher":
         teachers = Account.objects.filter(faculty=faculty)
         context = {"teachers": teachers}
-        return render(request, "teacher_detail.html", context=context)
+        return render(request, "teacher_list.html", context=context)
 
     allowed_faculty = [faculty.name.lower() for faculty in Faculty.objects.all()]
 

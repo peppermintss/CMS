@@ -1,9 +1,9 @@
 {% include 'navbar.html' %}
 
-<button hx-get="/add_account/teacher/0" hx-target="body" class="rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-teal-600">Add account</button>
+{% comment %} <button hx-get="/add_account/teacher/0" hx-target="body" class="rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-teal-600">Add account</button> {% endcomment %}
 
 
-<div class="flex justify-center">
+<div class="flex justify-center pt-5 mt-10">
     <div class="w-full lg:w-3/4 xl:w-2/3">
         <table class="table-auto border border-gray-300 mx-auto">
             <thead>
@@ -31,5 +31,8 @@
                 {% endfor %}
             </tbody>
         </table>
+        <div class="pt-3">
+            <button hx-get="/add_account/teacher/0" hx-target="body" class="rounded bg-gray-100 p-2 text-teal-600 font-semibold hover:bg-teal-600 hover:text-white transition">Add account</button>
+        </div>
     </div>
 </div>
