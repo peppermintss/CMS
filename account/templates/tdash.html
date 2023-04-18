@@ -1,6 +1,44 @@
 {% include 'navbar.html' %}
 
-<h1> Hello {{user.first_name}} {{user.last_name}}</h1>
+{% comment %} <h1> Hello {{user.first_name}} {{user.last_name}}</h1>
 
 <h1> YOUR SUBJECTS</h1>
-{% for subject in subjects %} {{subject}} {% endfor %}
+{% for subject in subjects %} {{subject}} {% endfor %} {% endcomment %}
+
+<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+<section class="h-auto pt-2 flex font-medium items-center justify-center w-full p-10">
+    <div class="grid gap-8">
+        <div class="grid content-center justify-items-center gap-3">
+            <div class=" break-all text-center">
+                <h1 class="text-3xl darktext font-bold text-center">Welcome {{user.first_name}} {{user.last_name}}</h1>
+                <span class="font-semi-bold text-lg"><br> {{user.faculty}} {{user.semester}} <sup>th</sup> semester</span>
+            </div>
+        </div>
+        <div class="grid grid-flow-row sm:grid-cols-2 gap-10 grid-cols-1 content-center justify-items-center lg:grid-cols-3 ">
+            <div class="bg-white hover:shadow-lg rounded-lg ">
+                <a class="relative block rounded-md border border-gray-100 p-8 shadow-xl w-[350px] h-[250px]" href="">
+                    <div class="flex items-center mt-4 text-teal-500 sm:pr-8">
+                        <span class="text-4xl mr-4"><i class="uil uil-file-check-alt"></i></span>
+                        <h3 class=" text-xl font-bold text-gray-900 text-center">Attendance</h3>
+                    </div>
+                </a>
+            </div>
+            <div class="bg-white hover:shadow-lg rounded-lg ">
+                <a class="relative block rounded-md border border-gray-100 p-8 shadow-xl w-[350px] h-[250px]" href="">
+                    <div class="flex items-center mt-4 text-teal-500 sm:pr-8">
+                        <span class="text-4xl mr-4"><i class="uil uil-schedule"></i></span>
+                        <h3 class=" text-xl font-bold text-gray-900 text-center">Notice Board</h3>
+                    </div>
+                </a>
+            </div>
+            <div class="bg-white hover:shadow-lg rounded-lg ">
+                <a class="relative block rounded-md border border-gray-100 p-8 shadow-xl w-[350px] h-[250px]" href="">
+                    <div class="flex items-center mt-4 text-teal-500 sm:pr-8">
+                        <span class="text-4xl mr-4"><i class="uil uil-schedule"></i></span>
+                        <h3 class=" text-xl font-bold text-gray-900 text-center">Subjects</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
