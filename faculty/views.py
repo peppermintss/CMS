@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import Http404
+from django.http import Http404, HttpResponse
 from account.models import Account
 from .forms import FacultyAddForm, SubjectAddForm
 from .models import Faculty, Subject
@@ -70,3 +70,10 @@ def subject_detail_view(request, subject):
         subject_obj.notice = request.POST["notice"]
         subject_obj.save()
     return render(request, "subject_detail.html", context=context)
+
+
+def download(request, filename):
+    response = HttpResponse(open(f"media/{filename}", "rb").read())
+    response["Content-Type"] = "text/plain"
+    response["Content-Disposition"] = "attachment"
+    return response

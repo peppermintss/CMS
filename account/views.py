@@ -6,7 +6,7 @@ import random
 from django.core.exceptions import PermissionDenied
 from faculty.models import Faculty
 from .perm_checkers import verify_admin_access
-from faculty.models import Subject
+from faculty.models import Subject, Assignment
 from .models import Account
 from django.views.decorators.csrf import csrf_exempt
 
@@ -27,9 +27,24 @@ def dashboard(request):
         subjects = Subject.objects.filter(teacher=teacher_obj)
         context = {"subjects": subjects}
         return render(request, "tdash.html", context=context)
+    # ADDING .FIRST IN SUBJECT DECLARATION RETURNS ERROR NOT ITERABLE
     else:
+        """
+        there might be a way to handle this better using the ORM. Search for a better way.
+        """
+
         subjects = Subject.objects.filter(semester=request.user.semester)
-        context = {"subjects": subjects}
+
+        assignments = {}
+
+        for subject in subjects:
+            subject_assignments = Assignment.objects.filter(subject=subject)
+            assignments[subject] = subject_assignments
+            # assignments_list = Assignment.objects.filter(subject=i)
+            # for assignment in assignments_list:
+            #     assignments.append(assignment)
+
+        context = {"subjects": subjects, "assignments": assignments}
         return render(request, "sdash.html", context=context)
 
 

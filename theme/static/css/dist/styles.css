@@ -912,6 +912,10 @@ select {
   width: 33.333333%;
 }
 
+.w-screen {
+  width: 100vw;
+}
+
 .max-w-\[150px\] {
   max-width: 150px;
 }
