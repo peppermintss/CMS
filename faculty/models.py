@@ -3,6 +3,10 @@ from account.models import Account
 from django.contrib.auth.models import Group
 
 
+def file_name_generator(instance, filename):
+    return f"{instance.subject}_assignment"
+
+
 class Faculty(models.Model):
     name = models.CharField(max_length=50, unique=True)
 
@@ -23,3 +27,14 @@ class Subject(models.Model):
 
     def __str__(self):
         return self.name.lower()
+
+
+class Assignment(models.Model):
+    title = models.CharField(max_length=50)
+    start_date = models.DateField()
+    deadline = models.DateField()
+    assignment_file = models.FileField(upload_to=file_name_generator)
+    subject = models.ForeignKey(Subject, on_delete=models.DO_NOTHING, to_field="name")
+
+    def __str__(self):
+        return self.title.lower()
