@@ -29,11 +29,20 @@ def dashboard(request):
         return render(request, "tdash.html", context=context)
     # ADDING .FIRST IN SUBJECT DECLARATION RETURNS ERROR NOT ITERABLE
     else:
-        assignments = []
+        """
+        there might be a way to handle this better using the ORM. Search for a better way.
+        """
+
         subjects = Subject.objects.filter(semester=request.user.semester)
-        subject = [subject for subject in subjects]
-        for i in subject:
-            assignments.append(Assignment.objects.filter(subject=i).first())
+
+        assignments = {}
+
+        for subject in subjects:
+            subject_assignments = Assignment.objects.filter(subject=subject)
+            assignments[subject] = subject_assignments
+            # assignments_list = Assignment.objects.filter(subject=i)
+            # for assignment in assignments_list:
+            #     assignments.append(assignment)
 
         context = {"subjects": subjects, "assignments": assignments}
         return render(request, "sdash.html", context=context)

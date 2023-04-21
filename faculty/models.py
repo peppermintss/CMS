@@ -1,6 +1,5 @@
 from django.db import models
 from account.models import Account
-from django.contrib.auth.models import Group
 
 
 def file_name_generator(instance, filename):

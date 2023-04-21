@@ -42,7 +42,7 @@ urlpatterns = [
         name="add-subject",
     ),
     path("delete_account/<str:username>", delete_account, name="delete-account"),
-    path("download/", download, name="file-download"),
+    path("download/<str:filename>", download, name="file-download"),
     path("subject/<str:subject>", subject_detail_view, name="subject-detail"),
     path("__reload__/", include("django_browser_reload.urls")),
 ]

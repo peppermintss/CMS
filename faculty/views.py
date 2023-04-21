@@ -72,8 +72,8 @@ def subject_detail_view(request, subject):
     return render(request, "subject_detail.html", context=context)
 
 
-def download(request):
-    response = HttpResponse(open("media/hi.txt", "rb").read())
+def download(request, filename):
+    response = HttpResponse(open(f"media/{filename}", "rb").read())
     response["Content-Type"] = "text/plain"
     response["Content-Disposition"] = "attachment"
     return response

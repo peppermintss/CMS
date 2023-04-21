@@ -1,7 +1,6 @@
 {% include 'navbar.html' %} {% comment %}
 <div class="pt-2 text-center">
-  <span class="font-semibold px-5 py-5 rounded-md text-2xl"
-    >Welcome {{user.first_name}} {{user.last_name}}</span
+    <span class="font-semibold px-5 py-5 rounded-md text-2xl">Welcome {{user.first_name}} {{user.last_name}}</span
   >
   <span
     ><br />
@@ -49,54 +48,48 @@
             <span class="text-4xl mr-4"
               ><i class="uil uil-file-check-alt"></i
             ></span>
-            <h3 class="text-xl font-bold text-gray-900 text-center">
-              Attendance
-            </h3>
-          </div>
-        </a>
-      </div>
-      <div class="bg-white hover:shadow-lg rounded-lg">
-        <a
-          class="relative block rounded-md border border-gray-100 p-8 shadow-xl w-[350px] h-[250px]"
-          href=""
-        >
-          <div class="flex items-center mt-4 text-teal-500 sm:pr-8">
+    <h3 class="text-xl font-bold text-gray-900 text-center">
+        Attendance
+    </h3>
+</div>
+</a>
+</div>
+<div class="bg-white hover:shadow-lg rounded-lg">
+    <a class="relative block rounded-md border border-gray-100 p-8 shadow-xl w-[350px] h-[250px]" href="">
+        <div class="flex items-center mt-4 text-teal-500 sm:pr-8">
             <span class="text-4xl mr-4"><i class="uil uil-schedule"></i></span>
             <h3 class="text-xl font-bold text-gray-900 text-center">
-              Notice Board
+                Notice Board
             </h3>
-          </div>
-        </a>
-      </div>
-      <div class="bg-white hover:shadow-lg rounded-lg">
-        <a
-          class="relative block rounded-md border border-gray-100 p-8 shadow-xl w-[350px] h-[250px]"
-          href=""
-        >
-          <div class="flex items-center mt-4 text-teal-500 sm:pr-8">
+        </div>
+    </a>
+</div>
+<div class="bg-white hover:shadow-lg rounded-lg">
+    <a class="relative block rounded-md border border-gray-100 p-8 shadow-xl w-[350px] h-[250px]" href="">
+        <div class="flex items-center mt-4 text-teal-500 sm:pr-8">
             <span class="text-4xl mr-4"><i class="uil uil-book-open"></i></span>
             <h3 class="text-xl font-bold text-gray-900 text-center">
-              Assignments
+                Assignments
             </h3>
-          </div>
-        </a>
-      </div>
-    </div>
-  </div>
+        </div>
+    </a>
+</div>
+</div>
+</div>
 </section>
 
-<div
-  class="notice-board grid justify-items-center content-center gap-5 w-screen"
->
-  <h1>NOTICE BOARD</h1>
-  {% for subject in subjects %} {% if subject.notice %} {{subject}}
-  {{subject.notice}} <br />{% endif %} {% endfor %}
+<div class="notice-board grid justify-items-center content-center gap-5 w-screen">
+    <h1>NOTICE BOARD</h1>
+    {% for subject in subjects %} {% if subject.notice %} {{subject}} {{subject.notice}} <br />{% endif %} {% endfor %}
 </div>
 
 <div class="assignment-board">
-  <h1>ASSIGNEMNTS</h1>
-  {% for assignment in assignments %} {% if assignment %}
-  <a href="{% url 'file-download' %}"> {{assignment.assignment_file}} </a>
-  <br />
-  {% endif %} {% endfor %}
+    <h1 class="text-5xl">Assignments</h1>
+    {% for key,values in assignments.items %}
+    <div class="subject-assignment">
+        <h1 class="text-5xl">{{key}}</a> <br> {% for value in values %}
+            <a href="{% url 'file-download' value.assignment_file %}"> {{value.assignment_file}}</a> <br> {% endfor %}
+            <br><br><br>
+            <hr /> {% endfor %}</p>
+    </div>
 </div>
