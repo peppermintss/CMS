@@ -46,7 +46,7 @@
                     </div> {% endcomment %}
                     <div class="flex items-center gap-4">
                         <button  class="max-w-[150px] text-[20px]font-bold text-xl hover:text-teal-500 show-modal"> Add subject </button>
-                        <div class="modal h-screen w-full fixed left-0 top-0 flex justify-center items-center bg-black bg-opacity-50 hidden">
+                        <div class="modal h-screen w-full fixed left-0 top-0  justify-center items-center bg-black bg-opacity-50 hidden">
                             <div class="bg-white rounded shadow-lg w-1/3">
                                 <div class="border-b px-4 py-2 flex justify-between items-center">
                                     <h3 class="font-semibold text-lg">Add Subject</h3>
@@ -69,7 +69,6 @@
                                         <button class="bg-teal-600 hover:bg-teal-700 px-3 py-1 rounded text-white">Add</button>
                                     </div>
                                 </form>
-        
                             </div>
                         </div>
                     </div>
@@ -108,7 +107,7 @@
                                 <td class="border px-4 py-2">{{student.faculty}}</td>
                                 <td>
                                     <!-- <button hx-post="/delete_account/{{student.username}}" hx-target="#table-div">Delete</button> -->
-                                    <a href="{% url 'delete-account' student.username%}">
+                                    <a class="hover:text-teal-500" href="{% url 'delete-account' student.username%}">
                                         Delete
                                     </a>
                                 </td>
@@ -127,6 +126,7 @@
 
         showModal.addEventListener('click', function(){
             modal.classList.remove('hidden');
+            modal.classList.add('flex');
         });
         closeModal.forEach(close =>{
             close.addEventListener('click', function(){
