@@ -86,10 +86,16 @@
 <div class="assignment-board">
     <h1 class="text-5xl">Assignments</h1>
     {% for key,values in assignments.items %}
-    <div class="subject-assignment">
-        <h1 class="text-5xl">{{key}}</a> <br> {% for value in values %}
-            <a href="{% url 'file-download' value.assignment_file %}"> {{value.assignment_file}}</a> <br> {% endfor %}
-            <br><br><br>
-            <hr /> {% endfor %}</p>
+    <div class="subject-assignment pt-3">
+        <h1 class="text-5xl">{{key}}</a>
+            <div class="assignemnt-list text-xl">
+                <ul>
+                    <br> {% for value in values %}
+
+                    <li><a href="{% url 'file-download' value.assignment_file %}"> {{value}} </a> </li> <button class="button" hx-post="/submit_assignment/{{value.id}}" hx-target="body">Submit</button><br> {% endfor %}
+
+                    <hr /> {% endfor %}</p>
+                </ul>
+            </div>
     </div>
 </div>

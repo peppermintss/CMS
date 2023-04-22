@@ -10,6 +10,19 @@ from faculty.models import Subject, Assignment
 from .models import Account
 from django.views.decorators.csrf import csrf_exempt
 
+
+def get_assignments(request, subjects):
+    assignments = {}
+    for subject in subjects:
+        subject_assignments = Assignment.objects.filter(subject=subject)
+        for assignment in subject_assignments:
+            if request.user not in assignment.submitted_by.all():
+                if subject not in assignments:
+                    assignments[subject] = []
+                assignments[subject].append(assignment)
+    return assignments
+
+
 # OO LOOK AT THIS IF ELSE LADDER OO ITS NOT GOOD PRACTISE OOO SO SCARY I CRY
 
 
@@ -35,14 +48,7 @@ def dashboard(request):
 
         subjects = Subject.objects.filter(semester=request.user.semester)
 
-        assignments = {}
-
-        for subject in subjects:
-            subject_assignments = Assignment.objects.filter(subject=subject)
-            assignments[subject] = subject_assignments
-            # assignments_list = Assignment.objects.filter(subject=i)
-            # for assignment in assignments_list:
-            #     assignments.append(assignment)
+        assignments = get_assignments(request, subjects)
 
         context = {"subjects": subjects, "assignments": assignments}
         return render(request, "sdash.html", context=context)

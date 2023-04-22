@@ -2,9 +2,10 @@ from django.shortcuts import render, redirect
 from django.http import Http404, HttpResponse
 from account.models import Account
 from .forms import FacultyAddForm, SubjectAddForm
-from .models import Faculty, Subject
+from .models import Faculty, Subject, Assignment
 from django.contrib.auth.decorators import login_required, user_passes_test
 from account.perm_checkers import verify_admin_access
+from django.views.decorators.csrf import csrf_exempt
 
 
 @login_required
@@ -72,8 +73,27 @@ def subject_detail_view(request, subject):
     return render(request, "subject_detail.html", context=context)
 
 
+# ONLY WORKS FOR PDF. MAYBE USE MIME TO CHANGE
 def download(request, filename):
     response = HttpResponse(open(f"media/{filename}", "rb").read())
-    response["Content-Type"] = "text/plain"
+    response["Content-Type"] = "application/pdf"
     response["Content-Disposition"] = "attachment"
     return response
+
+
+@csrf_exempt
+def submit_assignment(request, pk):
+    assignment = Assignment.objects.get(id=pk)
+
+    print("Submitted")
+    assignment.submitted_by.add(request.user)
+    referrer = get_referer(request)
+
+    return redirect(referrer)
+
+
+def get_referer(request):
+    referer = request.META.get("HTTP_REFERER")
+    if not referer:
+        return None
+    return referer

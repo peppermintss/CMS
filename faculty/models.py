@@ -29,11 +29,17 @@ class Subject(models.Model):
 
 
 class Assignment(models.Model):
-    title = models.CharField(max_length=50)
+    title = models.CharField(max_length=60)
     start_date = models.DateField()
     deadline = models.DateField()
     assignment_file = models.FileField(upload_to=file_name_generator)
     subject = models.ForeignKey(Subject, on_delete=models.DO_NOTHING, to_field="name")
+    submitted_by = models.ManyToManyField(
+        Account,
+        limit_choices_to={"groups__name": "teacher"},
+        related_name="assignment_submitted",
+        blank=True,
+    )
 
     def __str__(self):
         return self.title.lower()
