@@ -22,6 +22,28 @@
                 <div class="flex items-center gap-4">
                     <div class="sm:flex sm:gap-4">
                         {% if user.is_authenticated %}
+                        <div class="relative inline-block text-left">
+                          <div>
+                              <button type="button" class="inline-flex justify-center w-full rounded-md  px-5 py-2.5 text-sm font-medium text-teal-600 bg-gray-100 shadow show-modal" >
+                                  <i class="uil uil-user-square text-2xl"></i>
+                                  <svg class="w-4 h-6 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path>
+                                  </svg>
+                              </button>
+                          </div>
+                          <div class="modal origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden" >
+                              <div class="py-1" >
+                                <div class="flex items-center">
+                                  <span class="block px-4 py-2 text-sm text-gray-700">Signed in as:</span>
+                                  <button class="text-black close-modal text-2xl hover:text-teal-600 mx-0">&times;</button>
+                                </div>
+                                
+                                  <span class="block px-4 py-2 text-sm font-medium text-gray-900">{{ user.username }}</span>
+                                  <div class="border-t border-gray-100"></div>
+                                  <a href="" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Change Password</a>
+                              </div>
+                          </div>
+                      </div>
                         <a class="rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white shadow" href="{% url 'logout-page' %}">
               Logout
             </a> {% else %}
@@ -60,6 +82,20 @@
         </div>
         </div>
     </header>
+    <script>
+      const modal = document.querySelector('.modal');
+      const showModal = document.querySelector('.show-modal');
+      const closeModal = document.querySelector('.close-modal');
+
+      showModal.addEventListener('click', function(){
+          modal.classList.remove('hidden');
+          
+      });
+      closeModal.addEventListener('click', function(){
+          modal.classList.add('hidden');
+          
+      });
+  </script>
 
 </body>
 
