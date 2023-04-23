@@ -82,6 +82,7 @@ def download(request, filename):
 
 
 @csrf_exempt
+@login_required
 def submit_assignment(request, pk):
     assignment = Assignment.objects.get(id=pk)
 
