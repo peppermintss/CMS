@@ -80,7 +80,7 @@
                 Semester {{semester}}
             </div>
             <div id="table-div" class="flex justify-center pt-5">
-                <div class="w-full lg:w-3/4 xl:w-2/3">
+                <div class="flex items-center justify-center">
                     <table class="table-auto border border-gray-300 mx-auto">
 
                         <thead>
@@ -105,7 +105,7 @@
                                 <td class="border px-4 py-2">{{student.phone_number}}</td>
                                 <td class="border px-4 py-2">{{student.address}}</td>
                                 <td class="border px-4 py-2">{{student.faculty}}</td>
-                                <td>
+                                <td class="border px-4 py-2">
                                     <!-- <button hx-post="/delete_account/{{student.username}}" hx-target="#table-div">Delete</button> -->
                                     <a class="hover:text-teal-500" href="{% url 'delete-account' student.username%}">
                                         Delete
