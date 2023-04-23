@@ -15,6 +15,7 @@ def get_assignments(request, subjects):
     assignments = {}
     for subject in subjects:
         subject_assignments = Assignment.objects.filter(subject=subject)
+
         for assignment in subject_assignments:
             if request.user not in assignment.submitted_by.all():
                 if subject not in assignments:
