@@ -36,7 +36,7 @@
                             </div>
                             <div class="modal origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden">
                                 <div class="py-1">
-                                    <div class="flex items-center">
+                                    <div class="flex justify-between items-center">
                                       <span class="block px-4 py-2 text-sm font-medium text-gray-900">{{ user.username }}</span>
                                       <button class="text-black close-modal text-2xl hover:text-teal-600 ml-auto">&times;</button>
                                     </div>
@@ -49,8 +49,8 @@
                                 </div>
                             </div>
                         </div>
-                        <a class="rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white shadow" href="{% url 'logout-page' %}">
-              Logout
+                        {% comment %} <a class="rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white shadow" href="{% url 'logout-page' %}">
+              Logout {% endcomment %}
             </a> {% else %}
 
                         <a class="rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white shadow" href="{% url 'logout-page' %}">
