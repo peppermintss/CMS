@@ -27,7 +27,7 @@
                         {% if user.is_authenticated %}
                         <div class="relative inline-block text-left">
                             <div>
-                                <button type="button" class="inline-flex justify-center w-full rounded-md  px-5 py-2.5 text-sm font-medium text-teal-600 bg-gray-100 shadow show-modal">
+                                <button type="button" class="inline-flex justify-center w-full rounded-md  px-5 py-2.5 text-sm font-medium text-white bg-teal-600 shadow show-modal">
                                   <i class="uil uil-user-square text-2xl"></i>
                                   <svg class="w-4 h-6 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path>
@@ -36,7 +36,7 @@
                             </div>
                             <div class="modal origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden">
                                 <div class="py-1">
-                                    <div class="flex justify-between items-center">
+                                    <div class="border-b flex justify-between items-center">
                                       <span class="block px-4 py-2 text-sm font-medium text-gray-900">{{ user.username }}</span>
                                       <button class="text-black close-modal text-2xl hover:text-teal-600 ml-auto">&times;</button>
                                     </div>
