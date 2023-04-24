@@ -9,10 +9,8 @@
     <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
 
 </head>
-<link
-  rel="stylesheet"
-  href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"
-/>
+<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css" />
+
 <body>
     <header aria-label="Site Header" class="bg-white">
         <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 mt-3">
@@ -37,13 +35,13 @@
                             <div class="modal origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden">
                                 <div class="py-1">
                                     <div class="flex items-center">
-                                      <span class="block px-4 py-2 text-sm font-medium text-gray-900">{{ user.username }}</span>
-                                      <button class="text-black close-modal text-2xl hover:text-teal-600 ml-auto">&times;</button>
+                                        <span class="block px-4 py-2 text-sm font-medium text-gray-900">{{ user.username }}</span>
+
                                     </div>
 
-                                    
+
                                     <div class="border-t border-gray-100"></div>
-                                    <a href="" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Change Password</a>
+                                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Change Password</a>
                                     <div class="border-t border-gray-100"></div>
                                     <a href="{% url 'logout-page' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-teal-600" role="menuitem">Logout</a>
                                 </div>
@@ -64,24 +62,7 @@
 
                     </div>
 
-                    <div class="block md:hidden">
-                        <button class="rounded bg-gray-100 p-2 text-gray-600 transition hover:text-gray-600/75">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
-            </button>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -91,7 +72,7 @@
         const modal = document.querySelector(".modal");
         const showModal = document.querySelector(".show-modal");
         const closeModal = document.querySelector(".close-modal");
-        console.log(showModal);
+
         showModal.addEventListener("click", function() {
             if (modal.classList.contains("hidden")) {
                 modal.classList.remove("hidden");
@@ -99,10 +80,6 @@
                 modal.classList.add("hidden");
             }
         });
-        closeModal.addEventListener('click', function(){
-          modal.classList.add('hidden');
-          
-      });
     </script>
 
 </body>
