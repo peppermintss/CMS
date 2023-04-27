@@ -1,4 +1,6 @@
 <form method="POST">
-  {% csrf_token %}
-  <input type="text" name="new-pass" />
+  {% csrf_token %} Old Password <input type="text" name="cur-pass" /> New
+  Password <input type="text" name="new-pass" /> Confirm Password
+  <input type="text" name="confirm-pass" /> {{error}}
+  <button type="submit">Submit</button>
 </form>

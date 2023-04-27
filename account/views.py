@@ -9,6 +9,7 @@ from .perm_checkers import verify_admin_access
 from faculty.models import Subject, Assignment
 from .models import Account
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.hashers import check_password
 
 
 def get_assignments(request, subjects):
@@ -131,9 +132,19 @@ def change_password(request):
     user = Account.objects.get(username=request.user.username)
     if request.method == "POST":
         new_pass = request.POST["new-pass"]
+        cur_pass = request.POST["cur-pass"]
+        confirm_pass = request.POST["confirm-pass"]
+        if new_pass != confirm_pass:
+            return render(
+                request, "pchange.html", {"error": "The passwords do not match"}
+            )
+        elif not check_password(cur_pass, user.password):
+            print(user.password)
+            return render(request, "pchange.html", {"error": "Your password is wrong"})
         user.set_password(new_pass)
         user.save()
         return redirect("home-page")
+
     return render(request, "pchange.html")
 
 
