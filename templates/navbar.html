@@ -112,12 +112,12 @@
         const show = document.querySelector('.showModal');
         const close = document.querySelectorAll('.closeModal');
 
-        show.addEventListener('click', function(){
+        show.addEventListener('click', function() {
             myModal.classList.remove('hidden');
             myModal.classList.add('flex');
         });
-        close.forEach(function(element){
-            element.addEventListener('click', function(){
+        close.forEach(function(element) {
+            element.addEventListener('click', function() {
                 myModal.classList.add('hidden');
             });
         });
