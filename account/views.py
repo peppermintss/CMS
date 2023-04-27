@@ -10,6 +10,7 @@ from faculty.models import Subject, Assignment
 from .models import Account
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.hashers import check_password
+from django.contrib import messages
 
 
 def get_assignments(request, subjects):
@@ -33,25 +34,25 @@ def get_assignments(request, subjects):
 def dashboard(request):
     group = request.user.groups.all()[0]
     group = str(group)
+
     if group == "admin":
         courses = Faculty.objects.all()
         context = {"courses": courses}
         return render(request, "adash.html", context=context)
+
     elif group == "teacher":
         teacher_obj = Account.objects.get(username=request.user.username)
         subjects = Subject.objects.filter(teacher=teacher_obj)
         context = {"subjects": subjects}
         return render(request, "tdash.html", context=context)
+
     # ADDING .FIRST IN SUBJECT DECLARATION RETURNS ERROR NOT ITERABLE
     else:
         """
         there might be a way to handle this better using the ORM. Search for a better way.
         """
-
         subjects = Subject.objects.filter(semester=request.user.semester)
-
         assignments = get_assignments(request, subjects)
-
         context = {"subjects": subjects, "assignments": assignments}
         return render(request, "sdash.html", context=context)
 
@@ -143,6 +144,7 @@ def change_password(request):
             return render(request, "pchange.html", {"error": "Your password is wrong"})
         user.set_password(new_pass)
         user.save()
+        messages.success(request, "Your password was changed.")
         return redirect("home-page")
 
     return render(request, "pchange.html")
