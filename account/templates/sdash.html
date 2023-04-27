@@ -2,7 +2,7 @@
 
 
 
-<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css" />
+
 <section class="h-auto pt-3 flex font-medium items-center justify-center w-full p-10">
     <div class="grid gap-8">
         <div class="grid content-center justify-items-center gap-3">
@@ -15,49 +15,65 @@
         >
       </div>
     </div>
-    <div
-      class="grid grid-flow-row sm:grid-cols-2 gap-10 grid-cols-1 content-center justify-items-center lg:grid-cols-3"
-    >
-      <div class="bg-white hover:shadow-lg rounded-lg">
-        <a
-          class="relative block rounded-md border border-gray-100 p-8 shadow-xl w-[350px] h-[250px]"
-          href=""
-        >
-          <div class="flex items-center mt-4 text-teal-600 sm:pr-8">
-            <span class="text-4xl mr-4"
-              ><i class="uil uil-file-check-alt"></i
-            ></span>
-                <h3 class="text-xl font-bold text-gray-900 text-center">
-                    Attendance
-                </h3>
+    <div class="flex flex-col items-start">
+        <h2 class="text-3xl font-bold mb-4">Assignments</h2>
+        <div class="grid grid-flow-row sm:grid-cols-2 gap-10 grid-cols-1 content-center justify-items-center lg:grid-cols-3">
+            <div class="bg-white hover:shadow-lg  rounded-lg">
+                <div class="relative block rounded-md border border-gray-100 p-4 shadow-xl w-[350px] h-[250px] overflow-hidden overflow-y-auto">
+                    <div class=" items-center mt-4 h-full justify-center ">
+                        
+                        <h3 class="text-xl font-semibold text-teal-600 text-center">
+                            Pending
+                        </h3>
+                        <div class="pt-2 justify center text-justify">
+                            my name is lalala i am doing lalala lorem lahstb cniw jhsud sjdhoh This course covers the 
+                            fundamentals of physics including oscillations, electromagnetic theory, and basics of quantum 
+                            mechanics, band theory, semiconductors and universal logic gates and finally physics of manufacturing 
+                            integrated circuits. also haynajh agy agy bhguh 
+
+                        </div>
+                    </div>
+                </div>
             </div>
-            </a>
-        </div>
-        <div class="bg-white hover:shadow-lg rounded-lg">
-            <a class="relative block rounded-md border border-gray-100 p-8 shadow-xl w-[350px] h-[250px]" href="">
-                <div class="flex items-center mt-4 text-teal-600 sm:pr-8">
-                    <span class="text-4xl mr-4"><i class="uil uil-schedule"></i></span>
-                    <h3 class="text-xl font-bold text-gray-900 text-center">
-                        Notice Board
-                    </h3>
+            <div class="bg-white hover:shadow-lg  rounded-lg">
+                <div class="relative block rounded-md border border-gray-100 p-4 shadow-xl w-[350px] h-[250px] overflow-hidden overflow-y-auto">
+                    <div class=" items-center mt-4 h-full justify-center ">
+                        
+                        <h3 class="text-xl font-semi-bold text-teal-600 text-center">
+                            Submitted
+                        </h3>
+                        <div class="pt-2 justify center text-justify">
+                            my name is lalala i am doing lalala lorem lahstb cniw jhsud sjdhoh This course covers the 
+                            fundamentals of physics including oscillations, electromagnetic theory, and basics of quantum 
+                            mechanics, band theory, semiconductors and universal logic gates and finally physics of manufacturing 
+                            integrated circuits. also haynajh agy agy bhguh 
+
+                        </div>
+                    </div>
                 </div>
-            </a>
-        </div>
-        <div class="bg-white hover:shadow-lg rounded-lg">
-            <a class="relative block rounded-md border border-gray-100 p-8 shadow-xl w-[350px] h-[250px]" href="">
-                <div class="flex items-center mt-4 text-teal-600 sm:pr-8">
-                    <span class="text-4xl mr-4"><i class="uil uil-book-open"></i></span>
-                    <h3 class="text-xl font-bold text-gray-900 text-center">
-                        Assignments
-                    </h3>
+            </div>
+            <div class="bg-white hover:shadow-lg  rounded-lg">
+                <div class="relative block rounded-md border border-gray-100 p-4 shadow-xl w-[350px] h-[250px] overflow-hidden overflow-y-auto">
+                    <div class=" items-center mt-4 h-full justify-center ">
+                        
+                        <h3 class="text-xl font-semibold text-teal-600 text-center">
+                            Missed
+                        </h3>
+                        <div class="pt-2 justify center text-justify">
+                            my name is lalala i am doing lalala lorem lahstb cniw jhsud sjdhoh This course covers the 
+                            fundamentals of physics including oscillations, electromagnetic theory, and basics of quantum 
+                            mechanics, band theory, semiconductors and universal logic gates and finally physics of manufacturing 
+                            integrated circuits. also haynajh agy agy bhguh 
+
+                        </div>
+                    </div>
                 </div>
-            </a>
+            </div>
         </div>
-    </div>
     </div>
 </section>
 
-<div class="notice-board grid justify-items-center content-center gap-5 w-screen">
+{% comment %} <div class="notice-board grid justify-items-center content-center gap-5 w-screen">
     <h1>NOTICE BOARD</h1>
     {% for subject in subjects %} {% if subject.notice %} {{subject}} {{subject.notice}} <br />{% endif %} {% endfor %}
 </div>
@@ -77,4 +93,4 @@
                 </ul>
             </div>
     </div>
-</div>
+</div> {% endcomment %}
