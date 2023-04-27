@@ -126,6 +126,17 @@ def delete_account(request, username):
     return redirect(referer)
 
 
+@login_required
+def change_password(request):
+    user = Account.objects.get(username=request.user.username)
+    if request.method == "POST":
+        new_pass = request.POST["new-pass"]
+        user.set_password(new_pass)
+        user.save()
+        return redirect("home-page")
+    return render(request, "pchange.html")
+
+
 def get_referer(request):
     referer = request.META.get("HTTP_REFERER")
     if not referer:

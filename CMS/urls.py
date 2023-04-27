@@ -1,6 +1,12 @@
 from django.contrib import admin
 from django.urls import path, include
-from account.views import register_page, dashboard, add_account, delete_account
+from account.views import (
+    register_page,
+    dashboard,
+    add_account,
+    delete_account,
+    change_password,
+)
 from django.contrib.auth.views import LoginView, LogoutView
 
 from faculty.views import (
@@ -50,5 +56,6 @@ urlpatterns = [
         submit_assignment,
         name="submit-assignment",
     ),
+    path("pchange/", change_password, name="change-password"),
     path("__reload__/", include("django_browser_reload.urls")),
 ]

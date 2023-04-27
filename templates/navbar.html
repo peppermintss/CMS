@@ -41,15 +41,14 @@
 
 
                                     <div class="border-t border-gray-100"></div>
-                                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Change Password</a>
+                                    <a href="{% url 'change-password' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Change Password</a>
                                     <div class="border-t border-gray-100"></div>
                                     <a href="{% url 'logout-page' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-teal-600" role="menuitem">Logout</a>
                                 </div>
                             </div>
                         </div>
-                        {% comment %} <a class="rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white shadow" href="{% url 'logout-page' %}">
-              Logout {% endcomment %}
-            </a> {% else %}
+
+                        </a> {% else %}
 
                         <a class="rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white shadow" href="{% url 'logout-page' %}">
               Login
