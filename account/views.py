@@ -11,19 +11,30 @@ from .models import Account
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.hashers import check_password
 from django.contrib import messages
+from django.utils import timezone
 
 
+#This block is a crime against humanity. Fix it.
 def get_assignments(request, subjects):
     assignments = {}
+    submitted_assignments = list((Assignment.objects.filter(submitted_by= request.user)))
+    now = timezone.now().date()
+    
+    missed_assignments  = list(Assignment.objects.filter(deadline__lte=now).exclude(title__in=submitted_assignments))
+    
     for subject in subjects:
         subject_assignments = Assignment.objects.filter(subject=subject)
 
         for assignment in subject_assignments:
-            if request.user not in assignment.submitted_by.all():
+            
+            if request.user not in assignment.submitted_by.all() and assignment not in missed_assignments:
                 if subject not in assignments:
+                    print(subject)
                     assignments[subject] = []
                 assignments[subject].append(assignment)
-    return assignments
+    
+    
+    return assignments,submitted_assignments,missed_assignments
 
 
 # OO LOOK AT THIS IF ELSE LADDER OO ITS NOT GOOD PRACTISE OOO SO SCARY I CRY
@@ -52,8 +63,8 @@ def dashboard(request):
         there might be a way to handle this better using the ORM. Search for a better way.
         """
         subjects = Subject.objects.filter(semester=request.user.semester)
-        assignments = get_assignments(request, subjects)
-        context = {"subjects": subjects, "assignments": assignments}
+        assignments,submitted_assignments,missed_assignments = get_assignments(request, subjects)
+        context = {"subjects": subjects, "assignments": assignments,"submitted_assignments":submitted_assignments,"missed_assignments":missed_assignments}
         return render(request, "sdash.html", context=context)
 
 

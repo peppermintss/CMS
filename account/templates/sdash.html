@@ -25,32 +25,20 @@
                         <h3 class="text-xl font-semibold text-teal-600 text-center">
                             Pending
                         </h3>
+                         {% for key,values in assignments.items %}
+                         {% for value in values %}
                         <div class=" pt-2 justify center text-justify">
                             <div class="flex">
-                                <p class="font-semibold">Complete cg assignment and also do something for ca as well</p>
-                                <button>
-                                    <svg style="color: rgb(0, 137, 123);" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"> <path fill-rule="evenodd" clip-rule="evenodd" d="M0 7.5C0 3.35786 3.35786 0 7.5 0C11.6421 0 15 3.35786 15 7.5C15 11.6421 11.6421 15 7.5 15C3.35786 15 0 11.6421 0 7.5ZM7.0718 10.7106L11.3905 5.31232L10.6096 4.68762L6.92825 9.2893L4.32012 7.11586L3.67993 7.88408L7.0718 10.7106Z" fill="#00897b"></path> </svg>
-                                </button>
-                            </div>
-                            <hr>
-                            <br>
-                            <div class="flex">
-                                <p class="font-semibold">Complete cg assignment and also do something for ca as well</p>
-                                <button>
-                                    <svg style="color: rgb(0, 137, 123);" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"> <path fill-rule="evenodd" clip-rule="evenodd" d="M0 7.5C0 3.35786 3.35786 0 7.5 0C11.6421 0 15 3.35786 15 7.5C15 11.6421 11.6421 15 7.5 15C3.35786 15 0 11.6421 0 7.5ZM7.0718 10.7106L11.3905 5.31232L10.6096 4.68762L6.92825 9.2893L4.32012 7.11586L3.67993 7.88408L7.0718 10.7106Z" fill="#00897b"></path> </svg>
-                                </button>
-                            </div>
-                            <hr>
-                            <br>
-                            <div class="flex">
-                                <p class="font-semibold">Complete cg assignment and also do something for ca as well</p>
-                                <button>
+                                <a href="{% url 'file-download' value.assignment_file %}"><b>{{key}}</b>  {{value}} </a>
+                                <button hx-post="/submit_assignment/{{value.id}}" hx-target="body">
                                     <svg style="color: rgb(0, 137, 123);" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"> <path fill-rule="evenodd" clip-rule="evenodd" d="M0 7.5C0 3.35786 3.35786 0 7.5 0C11.6421 0 15 3.35786 15 7.5C15 11.6421 11.6421 15 7.5 15C3.35786 15 0 11.6421 0 7.5ZM7.0718 10.7106L11.3905 5.31232L10.6096 4.68762L6.92825 9.2893L4.32012 7.11586L3.67993 7.88408L7.0718 10.7106Z" fill="#00897b"></path> </svg>
                                 </button>
                             </div>
                             <hr>
                             <br>
                         </div>
+                        {% endfor %}
+                        {% endfor %}
                     </div>
                 </div>
             </div>
@@ -61,11 +49,14 @@
                         <h3 class="text-xl font-semi-bold text-teal-600 text-center">
                             Submitted
                         </h3>
+                        {% for submitted in submitted_assignments %}
                         <div class="pt-2 justify center text-justify">
-                            <p class="font-semibold">Complete cg assignment and also do something for ca as well</p>
+                            <p class="font-semibold"> <b>{{submitted.subject}}</b>  {{submitted}} </p>
                             <hr>
                             <br>
+
                         </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
@@ -76,11 +67,13 @@
                         <h3 class="text-xl font-semibold text-teal-600 text-center">
                             Missed
                         </h3>
+                        {% for missed in missed_assignments %}
                         <div class="pt-2 justify center text-justify">
-                            <p class="font-semibold">Complete cg assignment and also do something for ca as well</p>
+                            <p class="font-semibold"><b>{{missed.subject}}</b> {{missed}} </p>
                             <hr>
                             <br>
                         </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
@@ -132,24 +125,7 @@
 
 </style>
 
-{% comment %} <div class="notice-board grid justify-items-center content-center gap-5 w-screen">
+ <!-- <div class="notice-board grid justify-items-center content-center gap-5 w-screen">
     <h1>NOTICE BOARD</h1>
     {% for subject in subjects %} {% if subject.notice %} {{subject}} {{subject.notice}} <br />{% endif %} {% endfor %}
-</div>
-
-<div class="assignment-board">
-    <h1 class="text-5xl">Assignments</h1>
-    {% for key,values in assignments.items %}
-    <div class="subject-assignment pt-3">
-        <h1 class="text-5xl">{{key}}</a>
-            <div class="assignemnt-list text-xl">
-                <ul>
-                    <br> {% for value in values %}
-
-                    <li><a href="{% url 'file-download' value.assignment_file %}"> {{value}} </a> </li> <button class="button" hx-post="/submit_assignment/{{value.id}}" hx-target="body">Submit</button><br> {% endfor %}
-
-                    <hr /> {% endfor %}</p>
-                </ul>
-            </div>
-    </div>
-</div> {% endcomment %}
+</div> -->
