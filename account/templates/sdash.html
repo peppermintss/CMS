@@ -83,26 +83,15 @@
         <h2 class="text-3xl font-bold mb-4">Notice Board</h2>
         <div class="bg-white hover:shadow-lg  rounded-lg">
             <div class="relative  rounded-md border border-gray-100 p-4 shadow-xl w-full h-[250px] overflow-hidden overflow-y-auto"id=about>
+                {% for subject in subjects %}
                 <div class="pt-2 justify center text-justify">
-                    <p class="font-semibold">Complete cg assignment and also do something for ca as well</p>
+                    <p class="font-semibold">{% if subject.notice %} {{subject}} {{subject.notice}} {% endif %}</p>
                     <hr>
                     <br>
                 </div>
-                <div class="pt-2 justify center text-justify">
-                    <p class="font-semibold">Complete cg assignment and also do something for ca as well</p>
-                    <hr>
-                    <br>
-                </div>
-                <div class="pt-2 justify center text-justify">
-                    <p class="font-semibold">Complete cg assignment and also do something for ca as well</p>
-                    <hr>
-                    <br>
-                </div>
-                <div class="pt-2 justify center text-justify">
-                    <p class="font-semibold">Complete cg assignment and also do something for ca as well</p>
-                    <hr>
-                    <br>
-                </div>
+                {% endfor %}
+                
+                
             </div>
         </div>
     </div>
