@@ -3,36 +3,41 @@
 {% comment %} <button hx-get="/add_account/teacher/0" hx-target="body" class="rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-teal-600">Add account</button> {% endcomment %}
 
 
-<div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 flex justify-center pt-5 mt-10">
-    <div class="w-full lg:w-3/4 xl:w-2/3">
-        <table class="table-auto border border-gray-300 mx-0">
-            <thead>
-                <tr class="bg-gray-100">
-                    <th class="px-4 py-2 border-r border-gray-400">Username</th>
-                    <th class="px-4 py-2 border-r border-gray-400">First Name</th>
-                    <th class="px-4 py-2 border-r border-gray-400">Last Name</th>
-                    <th class="px-4 py-2 border-r border-gray-400">Email</th>
-                    <th class="px-4 py-2 border-r border-gray-400">Phone Number</th>
-                    <th class="px-4 py-2 border-r border-gray-400">Address</th>
-                    <th class="px-4 py-2 border-r border-gray-400">Faculty</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for teacher in teachers%}
-                <tr class="hover:bg-gray-50">
-                    <td class="border px-4 py-2">{{teacher.username}}</td>
-                    <td class="border px-4 py-2">{{teacher.first_name}}</td>
-                    <td class="border px-4 py-2">{{teacher.last_name}}</td>
-                    <td class="border px-4 py-2">{{teacher.email}}</td>
-                    <td class="border px-4 py-2">{{teacher.phone_number}}</td>
-                    <td class="border px-4 py-2">{{teacher.address}}</td>
-                    <td class="border px-4 py-2">{{teacher.faculty}}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        <div class="pt-3 items-center">
-            <button hx-get="/add_account/teacher/0" hx-target="body" class="rounded bg-gray-100 p-2 text-teal-600 font-semibold hover:bg-teal-600 hover:text-white transition">Add account</button>
+<div class="md:px-32 py-8 w-full h-auto flex items-center justify-center pt-5 mb-20 lg:mb-0 ">
+    <div class="shadow overflow-hidden rounded border-b border-gray-200" >
+        <div class="overflow-x-auto">
+            <table class="w-full table-auto">
+                <thead class="bg-gray-800 text-white">
+                    <tr>
+                        <th class=" text-left py-3 px-4 uppercase font-semibold text-sm">Username</th>
+                        <th class="text-left py-3 px-4 uppercase font-semibold text-sm">First Name</th>
+                        <th class=" text-left py-3 px-4 uppercase font-semibold text-sm">Last name</th>
+                        <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Email</th>
+                        <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Phone Number</th>
+                        <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Adress</th>
+                        <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Faculty</td>
+                    </tr>
+                </thead>
+                <tbody class="text-gray-700">
+                    {% for teacher in teachers%}
+                    <tr class="hover:bg-gray-100">
+                        <td class=" md:w-auto text-left py-3 px-4">{{teacher.username}}</td>
+                        <td class=" md:w-auto text-left py-3 px-4">{{teacher.first_name}}</td>
+                        <td class=" md:w-auto text-left py-3 px-4">{{teacher.last_name}}</td>
+                        <td class="text-left py-3 px-4 md:table-cell">{{teacher.email}}</td>
+                        <td class="text-left py-3 px-4 md:table-cell">{{teacher.phone_number}}</td>
+                        <td class="text-left py-3 px-4 md:table-cell">{{teacher.address}}</td>
+                        <td class="text-left py-3 px-4 md:table-cell">{{teacher.faculty}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         </div>
+        
     </div>
 </div>
+<div class="pt-2 flex justify-center ">
+    <button hx-get="/add_account/teacher/0" hx-target="body" class="rounded bg-gray-100 p-2 text-teal-600 font-semibold hover:bg-teal-600 hover:text-white transition">Add account</button>
+</div>
+
+
