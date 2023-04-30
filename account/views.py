@@ -43,6 +43,16 @@ def get_assignments(request, subjects):
 # THIS FUNCTION IS EXTREMELY CLUTTERED REFACTOR PLEASE I CRY OMG SO BAD
 @login_required
 def dashboard(request):
+    if request.method== "POST":
+        user = Account.objects.get(username=request.user.username)
+        new_pass = request.POST["new-password"]
+     
+    
+        user.set_password(new_pass)
+        user.save()
+        messages.success(request, "Your password was changed.")
+        return redirect('home-page')
+
     group = request.user.groups.all()[0]
     group = str(group)
 
@@ -139,26 +149,6 @@ def delete_account(request, username):
     return redirect(referer)
 
 
-@login_required
-def change_password(request):
-    user = Account.objects.get(username=request.user.username)
-    if request.method == "POST":
-        new_pass = request.POST["new-pass"]
-        cur_pass = request.POST["cur-pass"]
-        confirm_pass = request.POST["confirm-pass"]
-        if new_pass != confirm_pass:
-            return render(
-                request, "pchange.html", {"error": "The passwords do not match"}
-            )
-        elif not check_password(cur_pass, user.password):
-            print(user.password)
-            return render(request, "pchange.html", {"error": "Your password is wrong"})
-        user.set_password(new_pass)
-        user.save()
-        messages.success(request, "Your password was changed.")
-        return redirect("home-page")
-
-    return render(request, "pchange.html")
 
 
 def get_referer(request):
