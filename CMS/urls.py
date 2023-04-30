@@ -5,7 +5,7 @@ from account.views import (
     dashboard,
     add_account,
     delete_account,
-    change_password,
+   
 )
 from django.contrib.auth.views import LoginView, LogoutView
 
@@ -56,6 +56,6 @@ urlpatterns = [
         submit_assignment,
         name="submit-assignment",
     ),
-    path("pchange/", change_password, name="change-password"),
+   
     path("__reload__/", include("django_browser_reload.urls")),
 ]
