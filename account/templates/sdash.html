@@ -1,8 +1,5 @@
 {% include 'navbar.html' %}
 
-
-
-
 <section class="h-auto pt-3 flex font-medium items-center justify-center w-full p-10">
     <div class="grid gap-8">
         <div class="grid content-center justify-items-center gap-3">
@@ -61,7 +58,7 @@
                 </div>
             </div>
             <div class="bg-white hover:shadow-lg  rounded-lg">
-                <div class="relative block rounded-md border border-gray-100 p-4 shadow-xl w-[350px] h-[250px] overflow-hidden overflow-y-auto"id=about>
+                <div class="relative block rounded-md border border-gray-100 p-4 shadow-xl w-[350px] h-[250px] overflow-hidden overflow-y-auto"id="about">
                     <div class=" items-center mt-4 h-full justify-center ">
                         
                         <h3 class="text-xl font-semibold text-teal-600 text-center">
@@ -69,7 +66,12 @@
                         </h3>
                         {% for missed in missed_assignments %}
                         <div class="pt-2 justify center text-justify">
-                            <p class="font-semibold"><b>{{missed.subject}}</b> {{missed}} </p>
+                            <p>
+                                <b >
+                                  <span class="uppercase rounded-md px-2 py-1 bg-green-800 text-white">{{missed.subject}}</span>
+                                </b>
+                                {{missed}}
+                              </p>
                             <hr>
                             <br>
                         </div>
@@ -82,7 +84,7 @@
     <div>
         <h2 class="text-3xl font-bold mb-4">Notice Board</h2>
         <div class="bg-white hover:shadow-lg  rounded-lg">
-            <div class="relative  rounded-md border border-gray-100 p-4 shadow-xl w-full h-[250px] overflow-hidden overflow-y-auto"id=about>
+            <div class="relative  rounded-md border border-gray-100 p-4 shadow-xl w-full h-[250px] overflow-hidden overflow-y-auto"id="about">
                 {% for subject in subjects %}
                 <div class="pt-2 justify center text-justify">
                     <p class="font-semibold">{% if subject.notice %} {{subject}} {{subject.notice}} {% endif %}</p>
@@ -113,8 +115,3 @@
 }
 
 </style>
-
- <!-- <div class="notice-board grid justify-items-center content-center gap-5 w-screen">
-    <h1>NOTICE BOARD</h1>
-    {% for subject in subjects %} {% if subject.notice %} {{subject}} {{subject.notice}} <br />{% endif %} {% endfor %}
-</div> -->

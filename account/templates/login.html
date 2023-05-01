@@ -4,37 +4,66 @@
 <head>
     <title>Log in</title>
 </head>
+{% load static %}
 
 <body>
-    <div class="pwd-change-msg">
-        {% for message in messages %} {{message}} {% endfor %} {% include 'navbar.html' %} {% if form.errors %} {% for field_errors in form.errors.values %} {% for error in field_errors%}
-        <p>{{ error }}</p>
-        {% endfor %} {% endfor %} {% endif %}
-    </div>
+  <div>
+    {% include 'navbar.html' %}
+    
+  </div>
 
-  <div class="flex-grow flex-shrink-0 flex items-center justify-center">
-      <div class="bg-gray-200 shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col">
-          <h2 class="mb-4 text-gray-800 text-xl font-bold text-center">Log in!</h2>
-
-          <form method="POST" class="space-y-4">
-              {% csrf_token %}
-              <div>
-                  {{form.username.label}}
-                  <input type="text" name="{{form.username.name}}" class="appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:ring-teal-500 focus:border-teal-500" required>
+  <div class="h-auto my-5 lg:flex items-center justify-center mx-auto max-w-[95%] lg:max-w-[1180px]">
+    <div class="md:flex-row flex flex-col justify-center items-center w-full">
+      <div class="grid gap-4 mx-4 lg:max-w-[50%]">
+        <div>
+          <h1 class="text-[30px] lg:text-[40px]">Log In</h1>
+          {% for message in messages %} 
+            <p class="text-red-500 font-medium mb-2">{{message}}</p> 
+          {% endfor %}
+        </div>
+        <div class="grid gap-4">
+          <p class="leading-8 sm:text-[16px] lg:text-xl text-gray-600">Your education journey continues, login to our system to access your resources.</p>
+          <div class="w-full">
+            <div class="rounded-md">
+              <div class="relative rounded-md shadow-sm w-full">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"></div>
               </div>
-
-              <div>
-                  {{form.password.label}}
-                  <input type="password" name="{{form.password.name}}" class="appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:ring-teal-500 focus:border-teal-500 " required>
+              <div class="flex-grow flex-shrink-0 flex justify-center lg:justify-start">
+                <div class="shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col w-full max-w-md">
+                  <form method="POST" class="space-y-4">
+                    {% csrf_token %}
+                    <div>
+                      {{form.username.label}}
+                      <input type="text" name="{{form.username.name}}" class="appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:ring-teal-500 focus:border-teal-500" required>
+                    </div>
+                    <div>
+                      {{form.password.label}}
+                      <input type="password" name="{{form.password.name}}" class="appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:ring-teal-500 focus:border-teal-500" required>
+                    </div>
+                    <button type="submit" class="mx-auto lg:mx-0 bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded">Sign In</button>
+                  </form>
+                  <div>
+                    {% if form.errors %}
+                      {% for field_errors in form.errors.values %}
+                        {% for error in field_errors %}
+                          <p class="font-medium text-yellow-500">{{ error }}</p>
+                        {% endfor %}
+                      {% endfor %}
+                    {% endif %}
+                  </div>
+                </div>
               </div>
-
-              <button type="submit" class="mx-auto bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded">
-                  Sign In
-              </button>
-          </form>
+            </div>
+          </div>
+        </div>
       </div>
+      <div class="hidden lg:block lg:max-w-[50%] justify-center items-center">
+        <img src="{% static 'images/read.svg' %}">
+      </div>
+    </div>
   </div>
 </body>
+
 
 
 
