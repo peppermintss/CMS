@@ -14,8 +14,8 @@ class Account(AbstractUser):
     USERNAME_FIELD = "username"
 
     def __str__(self):
-        return self.first_name + " " + self.last_name
-    
+        return self.username
+
 
 class Attendance(models.Model):
     date = models.DateField()
@@ -23,9 +23,8 @@ class Attendance(models.Model):
         Account,
         limit_choices_to={"groups__name": "student"},
         related_name="students_present",
-        blank=True
+        blank=True,
     )
 
     def __str__(self):
         return str(self.date)
-    

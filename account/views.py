@@ -13,27 +13,32 @@ from django.contrib import messages
 from django.utils import timezone
 
 
-#This block is a crime against humanity. Fix it.
+# This block is a crime against humanity. Fix it.
 def get_assignments(request, subjects):
     assignments = {}
-    submitted_assignments = list((Assignment.objects.filter(submitted_by= request.user)))
+    submitted_assignments = list((Assignment.objects.filter(submitted_by=request.user)))
     now = timezone.now().date()
-    
-    missed_assignments  = list(Assignment.objects.filter(deadline__lte=now).exclude(title__in=submitted_assignments))
-    
+
+    missed_assignments = list(
+        Assignment.objects.filter(deadline__lte=now).exclude(
+            title__in=submitted_assignments
+        )
+    )
+
     for subject in subjects:
         subject_assignments = Assignment.objects.filter(subject=subject)
 
         for assignment in subject_assignments:
-            
-            if request.user not in assignment.submitted_by.all() and assignment not in missed_assignments:
+            if (
+                request.user not in assignment.submitted_by.all()
+                and assignment not in missed_assignments
+            ):
                 if subject not in assignments:
                     print(subject)
                     assignments[subject] = []
                 assignments[subject].append(assignment)
-    
-    
-    return assignments,submitted_assignments,missed_assignments
+
+    return assignments, submitted_assignments, missed_assignments
 
 
 # OO LOOK AT THIS IF ELSE LADDER OO ITS NOT GOOD PRACTISE OOO SO SCARY I CRY
@@ -42,15 +47,14 @@ def get_assignments(request, subjects):
 # THIS FUNCTION IS EXTREMELY CLUTTERED REFACTOR PLEASE I CRY OMG SO BAD
 @login_required
 def dashboard(request):
-    if request.method== "POST":
+    if request.method == "POST":
         user = Account.objects.get(username=request.user.username)
         new_pass = request.POST["new-password"]
-     
-    
+
         user.set_password(new_pass)
         user.save()
         messages.success(request, "Your password was changed.")
-        return redirect('home-page')
+        return redirect("home-page")
 
     group = request.user.groups.all()[0]
     group = str(group)
@@ -63,8 +67,8 @@ def dashboard(request):
     elif group == "teacher":
         teacher_obj = Account.objects.get(username=request.user.username)
         subjects = Subject.objects.filter(teacher=teacher_obj)
-        context = {"teacher":teacher_obj}
-        
+        context = {"teacher": teacher_obj}
+
         return render(request, "tdash.html", context=context)
 
     # ADDING .FIRST IN SUBJECT DECLARATION RETURNS ERROR NOT ITERABLE
@@ -73,8 +77,15 @@ def dashboard(request):
         there might be a way to handle this better using the ORM. Search for a better way.
         """
         subjects = Subject.objects.filter(semester=request.user.semester)
-        assignments,submitted_assignments,missed_assignments = get_assignments(request, subjects)
-        context = {"subjects": subjects, "assignments": assignments,"submitted_assignments":submitted_assignments,"missed_assignments":missed_assignments}
+        assignments, submitted_assignments, missed_assignments = get_assignments(
+            request, subjects
+        )
+        context = {
+            "subjects": subjects,
+            "assignments": assignments,
+            "submitted_assignments": submitted_assignments,
+            "missed_assignments": missed_assignments,
+        }
         return render(request, "sdash.html", context=context)
 
 
@@ -150,18 +161,18 @@ def delete_account(request, username):
 
 
 @user_passes_test(verify_admin_access)
-def attendance(request,faculty,semester):
+def attendance(request, faculty, semester):
     student_list = Account.objects.filter(faculty=faculty).filter(semester=semester)
-    context={
-        'students': student_list
-    }
     attendance_obj = Attendance.objects.get(date=timezone.now().date())
-    if student_list[0] in attendance_obj.students.all():
-        print("True")
-    else:
-        print("False")
-    
-    return render(request,"attendance.html",context=context)
+    present_students = [student for student in attendance_obj.students.all()]
+
+    context = {
+        "students": student_list,
+        "present": present_students,
+    }
+
+    return render(request, "attendance.html", context=context)
+
 
 def get_referer(request):
     referer = request.META.get("HTTP_REFERER")

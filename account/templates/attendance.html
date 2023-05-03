@@ -1,6 +1,4 @@
-{% include 'navbar.html' %}
-
-
+{% include 'navbar.html' %} {{present}}
 <div class="md:px-32 py-8 w-full h-auto flex items-center justify-center pt-5 mb-20 lg:mb-0 ">
     <div class="shadow overflow-hidden rounded border-b border-gray-200">
         <div class="overflow-x-auto">
@@ -26,7 +24,12 @@
                         <td class="text-left py-3 px-4 md:table-cell">{{student.email}}</td>
                         <td class="text-left py-3 px-4 md:table-cell">{{student.phone_number}}</td>
                         <td class="text-left py-3 px-4 md:table-cell">{{student.address}}</td>
-                        <td class="text-left py-3 px-4 md:table-cell">{{student.faculty}}</td>
+
+                        {% if student in presnet %}
+                        <td class="text-left py-3 px-4 md:table-cell">Presnet</td>
+                        {% else %}
+                        <td class="text-left py-3 px-4 md:table-cell">Absent</td>
+                        {% endif %}
                         <td class="text-left py-3 px-4 md:table-cell">
                             <a class="hover:text-teal-500" href="{% url 'delete-account' student.username%}"></a>
                         </td>
