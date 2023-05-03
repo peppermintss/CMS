@@ -5,6 +5,7 @@ from account.views import (
     dashboard,
     add_account,
     delete_account,
+    attendance,
    
 )
 from django.contrib.auth.views import LoginView, LogoutView
@@ -16,6 +17,7 @@ from faculty.views import (
     subject_detail_view,
     download,
     submit_assignment,
+    
 )
 
 
@@ -48,6 +50,7 @@ urlpatterns = [
         add_subject,
         name="add-subject",
     ),
+    path('attendance/<str:faculty>/<int:semester>/',attendance,name="attendance"),
     path("delete_account/<str:username>", delete_account, name="delete-account"),
     path("download/<str:filename>", download, name="file-download"),
     path("subject/<str:subject>", subject_detail_view, name="subject-detail"),

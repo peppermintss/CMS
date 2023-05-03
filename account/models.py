@@ -15,3 +15,17 @@ class Account(AbstractUser):
 
     def __str__(self):
         return self.first_name + " " + self.last_name
+    
+
+class Attendance(models.Model):
+    date = models.DateField()
+    students = models.ManyToManyField(
+        Account,
+        limit_choices_to={"groups__name": "student"},
+        related_name="students_present",
+        blank=True
+    )
+
+    def __str__(self):
+        return str(self.date)
+    

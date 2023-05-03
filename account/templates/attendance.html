@@ -1,0 +1,39 @@
+{% include 'navbar.html' %}
+
+
+<div class="md:px-32 py-8 w-full h-auto flex items-center justify-center pt-5 mb-20 lg:mb-0 ">
+    <div class="shadow overflow-hidden rounded border-b border-gray-200">
+        <div class="overflow-x-auto">
+            <table class="w-full table-auto">
+                <thead class="bg-gray-800 text-white">
+                    <tr>
+                        <th class=" text-left py-3 px-4 uppercase font-semibold text-sm">Username</th>
+                        <th class="text-left py-3 px-4 uppercase font-semibold text-sm">First Name</th>
+                        <th class=" text-left py-3 px-4 uppercase font-semibold text-sm">Last name</th>
+                        <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Email</th>
+                        <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Phone Number</th>
+                        <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Adress</th>
+                        <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Faculty</th>
+                        <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Action</th>
+                    </tr>
+                </thead>
+                <tbody class="text-gray-700">
+                    {% for student in students %}
+                    <tr class="hover:bg-gray-100">
+                        <td class=" md:w-auto text-left py-3 px-4">{{student.username}}</td>
+                        <td class=" md:w-auto text-left py-3 px-4">{{student.first_name}}</td>
+                        <td class=" md:w-auto text-left py-3 px-4">{{student.last_name}}</td>
+                        <td class="text-left py-3 px-4 md:table-cell">{{student.email}}</td>
+                        <td class="text-left py-3 px-4 md:table-cell">{{student.phone_number}}</td>
+                        <td class="text-left py-3 px-4 md:table-cell">{{student.address}}</td>
+                        <td class="text-left py-3 px-4 md:table-cell">{{student.faculty}}</td>
+                        <td class="text-left py-3 px-4 md:table-cell">
+                            <a class="hover:text-teal-500" href="{% url 'delete-account' student.username%}"></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

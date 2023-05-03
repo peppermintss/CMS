@@ -7,9 +7,8 @@ from django.core.exceptions import PermissionDenied
 from faculty.models import Faculty
 from .perm_checkers import verify_admin_access
 from faculty.models import Subject, Assignment
-from .models import Account
+from .models import Account, Attendance
 from django.views.decorators.csrf import csrf_exempt
-from django.contrib.auth.hashers import check_password
 from django.contrib import messages
 from django.utils import timezone
 
@@ -64,7 +63,8 @@ def dashboard(request):
     elif group == "teacher":
         teacher_obj = Account.objects.get(username=request.user.username)
         subjects = Subject.objects.filter(teacher=teacher_obj)
-        context = {"subjects": subjects}
+        context = {"teacher":teacher_obj}
+        
         return render(request, "tdash.html", context=context)
 
     # ADDING .FIRST IN SUBJECT DECLARATION RETURNS ERROR NOT ITERABLE
@@ -149,7 +149,19 @@ def delete_account(request, username):
     return redirect(referer)
 
 
-
+@user_passes_test(verify_admin_access)
+def attendance(request,faculty,semester):
+    student_list = Account.objects.filter(faculty=faculty).filter(semester=semester)
+    context={
+        'students': student_list
+    }
+    attendance_obj = Attendance.objects.get(date=timezone.now().date())
+    if student_list[0] in attendance_obj.students.all():
+        print("True")
+    else:
+        print("False")
+    
+    return render(request,"attendance.html",context=context)
 
 def get_referer(request):
     referer = request.META.get("HTTP_REFERER")
