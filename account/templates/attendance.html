@@ -24,9 +24,8 @@
                         <td class="text-left py-3 px-4 md:table-cell">{{student.email}}</td>
                         <td class="text-left py-3 px-4 md:table-cell">{{student.phone_number}}</td>
                         <td class="text-left py-3 px-4 md:table-cell">{{student.address}}</td>
-
-                        {% if student in presnet %}
-                        <td class="text-left py-3 px-4 md:table-cell">Presnet</td>
+                        {% if student in present %}
+                        <td class="text-left py-3 px-4 md:table-cell text-green-800">Present</td>
                         {% else %}
                         <td class="text-left py-3 px-4 md:table-cell">Absent</td>
                         {% endif %}
