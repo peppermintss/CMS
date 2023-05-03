@@ -1,4 +1,6 @@
-{% include 'navbar.html' %}
+{% include 'navbar.html' %} {% load static %}
+{% comment %} <link rel="stylesheet" href="{% static 'images/js/script.js' %}"> {% endcomment %}
+<script src="{% static 'images/js/script.js' %}"></script>
 
 <body>
   <div>
@@ -88,7 +90,7 @@
                 {% endfor %}
               </ul>
             </div>
-          </div>
+          </div> 
 
           <div class="flex items-center gap-4">
             <button
@@ -171,7 +173,7 @@
       </div>
     </div>
     <div>
-      <div class="text-center text-lg font-bold mt-4">
+      <div class="text-center text-2xl font-bold mt-4">
         Semester {{semester}}
       </div>
       <div class="md:px-32 py-8 w-full h-auto flex items-center justify-center pt-5 mb-20 lg:mb-0 ">
@@ -207,12 +209,53 @@
                         {% endfor %}
                     </tbody>
                 </table>
+              </div>
             </div>
         </div>
       </div>
     </div>
+  
+    <div id="subjects" class="md:px-32 py-8 w-full h-auto flex items-center justify-center pt-5 mb-20 lg:mb-0">
+      <div class="flex flex-col">
+        <div class="text-center">
+          <h2 class="text-2xl font-bold mb-4 ">Subjects</h2>
+        </div>
+        {% for subject in subjects %}
+        <div class="grid grid-flow-row sm:grid-cols-2 gap-10 grid-cols-1 content-center justify-items-center lg:grid-cols-3">
+          <div class="bg-white hover:shadow-lg  rounded-lg">
+            <div class="relative block rounded-md border border-gray-100 p-4 shadow-xl w-[350px] h-[200px]">
+              <div class=" items-center mt-2 h-full justify-center">       
+                <h3 class="uppercase text-xl font-semibold text-teal-600">
+                  {{subject}}
+                </h3>
+                <p >
+                          
+                  <span class="uppercase text-base">Teacher:</span>
+                  {{subject.teacher.first_name}} {{subject.teacher.last_name}}<br>
+                        
+                        
+                          {% comment %} <span class="uppercase text-base ">Taught in:</span> {{subject.faculty}} Semester {{subject.semester}}  {% endcomment %}
+                  <span class="uppercase text-base ">Semester Credit hours: 3</span>
+                  <div class="mt-2"><span class="rounded-md px-2 py-1 bg-green-800 text-white">{{subject.notice}}</span><div>
+                      
+                  <br>
+                  {% if group == "admin" %}
+                    <form method="POST">
+                      {% csrf_token %}
+                        <input type="text" name="notice">
+                        <button type="submit" class="rounded bg-gray-100 p-2 text-teal-600 font-sm hover:bg-teal-600 hover:text-white">Submit</button>
+                    </form>
+                  {% endif %}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>  
   </div>
-  <script>
+  {% comment %} <script>
     const subject = document.querySelector(".subject");
     const showsub = document.querySelector(".showSub");
     const closesub = document.querySelectorAll(".closeSub");
@@ -226,5 +269,5 @@
         subject.classList.add("hidden");
       });
     });
-  </script>
+  </script> {% endcomment %}
 </body>
