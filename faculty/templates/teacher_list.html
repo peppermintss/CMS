@@ -3,31 +3,33 @@
 {% comment %} <button hx-get="/add_account/teacher/0" hx-target="body" class="rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-teal-600">Add account</button> {% endcomment %}
 
 
-<div class="md:px-32 py-8 w-full h-auto flex items-center justify-center pt-5 mb-20 lg:mb-0 ">
+<div class="md:px-32 py-8 w-full h-auto flex items-center justify-center pt-10 mb-20 lg:mb-0 ">
     <div class="shadow overflow-hidden rounded border-b border-gray-200" >
         <div class="overflow-x-auto">
             <table class="w-full table-auto">
                 <thead class="bg-gray-800 text-white">
                     <tr>
-                        <th class=" text-left py-3 px-4 uppercase font-semibold text-sm">Username</th>
-                        <th class="text-left py-3 px-4 uppercase font-semibold text-sm">First Name</th>
-                        <th class=" text-left py-3 px-4 uppercase font-semibold text-sm">Last name</th>
-                        <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Email</th>
-                        <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Phone Number</th>
-                        <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Adress</th>
-                        <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Faculty</td>
+                        <th class="w-1/6 text-left py-3 px-4 uppercase font-semibold text-sm">Username</th>
+                        <th class="w-1/6 text-left py-3 px-4 uppercase font-semibold text-sm">First Name</th>
+                        <th class="w-1/6 text-left py-3 px-4 uppercase font-semibold text-sm">Last name</th>
+                        <th class="w-1/6 text-left py-3 px-4 uppercase font-semibold text-sm">Email</th>
+                        <th class="w-1/6 text-left py-3 px-4 uppercase font-semibold text-sm">Phone Number</th>
+                        <th class="w-1/6 text-left py-3 px-4 uppercase font-semibold text-sm">Adress</th>
+                        <th class="w-1/6 text-left py-3 px-4 uppercase font-semibold text-sm">Faculty</th>
+                        
                     </tr>
                 </thead>
                 <tbody class="text-gray-700">
                     {% for teacher in teachers%}
                     <tr class="hover:bg-gray-100">
-                        <td class=" md:w-auto text-left py-3 px-4">{{teacher.username}}</td>
-                        <td class=" md:w-auto text-left py-3 px-4">{{teacher.first_name}}</td>
-                        <td class=" md:w-auto text-left py-3 px-4">{{teacher.last_name}}</td>
-                        <td class="text-left py-3 px-4 md:table-cell">{{teacher.email}}</td>
-                        <td class="text-left py-3 px-4 md:table-cell">{{teacher.phone_number}}</td>
-                        <td class="text-left py-3 px-4 md:table-cell">{{teacher.address}}</td>
-                        <td class="text-left py-3 px-4 md:table-cell">{{teacher.faculty}}</td>
+                        <td class="w-1/6 break-words text-left py-3 px-4">{{teacher.username}}</td>
+                        <td class="w-1/6 break-words text-left py-3 px-4">{{teacher.first_name}}</td>
+                        <td class="w-1/6 break-words text-left py-3 px-4">{{teacher.last_name}}</td>
+                        <td class="w-1/6 break-words text-left py-3 px-4">{{teacher.email}}</td>
+                        <td class="w-1/6 break-words text-left py-3 px-4">{{teacher.phone_number}}</td>
+                        <td class="w-1/6 break-words text-left py-3 px-4">{{teacher.address}}</td>
+                        <td class="w-1/6 break-words text-left py-3 px-4">{{teacher.faculty}}</td>
+                        
                     </tr>
                     {% endfor %}
                 </tbody>
