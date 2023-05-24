@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 # This model probably needs more data that you have forgotten. Just remembered and added 1 hello? Make sure to
-# update admin.py if u chage things here
+# update admin.py if u change things here
 
 
 class Account(AbstractUser):
