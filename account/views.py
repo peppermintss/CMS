@@ -66,7 +66,7 @@ def dashboard(request):
 
     elif group == "teacher":
         teacher_obj = Account.objects.get(username=request.user.username)
-        subjects = Subject.objects.filter(teacher=teacher_obj)
+
         context = {"teacher": teacher_obj}
 
         return render(request, "tdash.html", context=context)

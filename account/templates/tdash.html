@@ -5,14 +5,22 @@
         <div class="grid content-center justify-items-center gap-3">
             <div class=" break-all text-center">
                 <h1 class="text-3xl darktext font-bold text-center">Welcome {{user.first_name}} {{user.last_name}}</h1>
-                <span class="font-semi-bold text-lg"><br> {{user.faculty}} {{user.semester}} <sup>th</sup> semester</span>
+
             </div>
         </div>
     </div>
 </section>
-{% for subject in teacher.subject_set.all %}
 
-<div id="subject-container">
-    {{subject}}
+
+<div id="subject-container" class="text-lg">
+    <div>
+        {% for subject in teacher.subject_set.all %} {{subject}} {% for assignment in subject.assignment_set.all %}
+
+        <a href="#">
+        {{assignment}}
+        </a> {% endfor %}
+        <button class="addAssignment"> Add assignment</button>
+    </div>
+
+    {% endfor %}
 </div>
-{% endfor %}

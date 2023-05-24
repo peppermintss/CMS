@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import Http404, HttpResponse
 from account.models import Account
-from .forms import FacultyAddForm, SubjectAddForm
+from .forms import FacultyAddForm, SubjectAddForm, AssignmentAddForm
 from .models import Faculty, Subject, Assignment
 from django.contrib.auth.decorators import login_required, user_passes_test
 from account.perm_checkers import verify_admin_access
@@ -91,6 +91,23 @@ def submit_assignment(request, pk):
     referrer = get_referer(request)
 
     return redirect(referrer)
+
+
+def add_assignment(request, subject):
+    form = AssignmentAddForm
+    if request.method == "POST":
+        form = AssignmentAddForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            print("validated")
+            new_assignment = form.save(commit=False)
+            new_assignment.subject = Subject.objects.get(name=subject.lower())
+
+            new_assignment.save()
+            return redirect(get_referer(request))
+        else:
+            print(form.errors)
+    return render(request, "add_assignment.html", {"form": form})
 
 
 def get_referer(request):
