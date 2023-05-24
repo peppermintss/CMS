@@ -2,6 +2,8 @@
 <link rel="stylesheet" href="{% static 'images/js/script.js' %}"> {% endcomment %}
 <script src="{% static 'images/js/script.js' %}"></script>
 
+<html class="scroll-smooth">
+
 <body>
     <div>
         <div class="h-auto w-full flex items-center justify-center pt-5 mb-20 lg:mb-0">
@@ -10,253 +12,210 @@
                     <div class="relative inline-flex flex-col">
                         <div class="inline-flex items-center gap-4">
                             <button class="max-w-[150px] text-[20px]font-bold text-xl hover:text-teal-500 cursor-pointer inline-flex" data-dropdown-toggle="dropdown">
-                Semesters<svg
-                  class="w-4 h-7 ml-2"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M19 9l-7 7-7-7"
-                  ></path>
-                </svg>
-              </button>
+                  Semesters<svg
+                    class="w-4 h-7 ml-2"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    ></path>
+                  </svg>
+                </button>
                         </div>
                         <div class="static left-0 bg-gray-50 z-10 top-full rounded-md p-4 hidden" id="dropdown">
                             <ul class="" aria-labelledby="dropdown">
                                 {% for i in semesters %}
                                 <li>
                                     <a href="{% url 'students-by-semester' faculty i %}" class="px-4 py-2 flex p-2 rounded-md hover:text-teal-500 hover:bg-gray-100 whitespace-nowrap">Semester {{i}}</a
-                  >
-                </li>
-                {% endfor %}
-              </ul>
+                    >
+                  </li>
+                  {% endfor %}
+                </ul>
+              </div>
             </div>
-          </div>
-          <div class="relative inline-flex flex-col">
-            <div class="inline-flex items-center gap-4">
-              <button
-                class="max-w-[150px] text-[20px]font-bold text-xl hover:text-teal-500 cursor-pointer inline-flex"
-                data-dropdown-toggle="dropdoown"
-              >
-                Subjects<svg
-                  class="w-4 h-7 ml-2"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
+            <div class="relative inline-flex flex-col">
+              <div class="inline-flex items-center gap-4">
+                <a
+                  class="max-w-[150px] text-[20px]font-bold text-xl hover:text-teal-500 cursor-pointer inline-flex" href="#subjects"
+                  
                 >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M19 9l-7 7-7-7"
-                  ></path>
-                </svg>
+                  Subjects
+                </a>
+                        </div>
+
+                    </div>
+
+                    <div class="flex items-center gap-4">
+                        <button hx-get="/add_account/{{faculty}}/{{semester}}" hx-target="body" class="max-w-[150px] text-[20px]font-bold text-xl hover:text-teal-500">
+                Add account
               </button>
-            </div>
-            <div
-              class="static left-0 bg-gray-50 z-10 top-full rounded-md p-4 hidden"
-              id="dropdoown"
-            >
-              <ul class="" aria-labelledby="dropdoown">
-                {% for subject in subjects %}
-                <li>
-                  <a
-                    href="{% url 'subject-detail' subject %}"
-                    class="px-4 py-2 flex p-2 rounded-md hover:text-teal-500 hover:bg-gray-100 whitespace-nowrap"
-                    >{{subject}}</a
-                  >
-                </li>
-                {% endfor %}
-              </ul>
-            </div>
-          </div> 
+                    </div>
 
-          <div class="flex items-center gap-4">
-            <button
-              hx-get="/add_account/{{faculty}}/{{semester}}"
-              hx-target="body"
-              class="max-w-[150px] text-[20px]font-bold text-xl hover:text-teal-500"
-            >
-              Add account
-            </button>
-          </div>
-
-          <div class="flex items-center gap-4">
-            <button
-              class="max-w-[150px] text-[20px]font-bold text-xl hover:text-teal-500 showSub"
-            >
-              Add subject
-            </button>
-            <div
-              class="subject h-screen w-full fixed left-0 top-0 justify-center items-center bg-black bg-opacity-50 hidden"
-            >
-              <div class="bg-white rounded shadow-lg w-1/3">
-                <div
-                  class="border-b px-4 py-2 flex justify-between items-center"
-                >
-                  <h3 class="font-semibold text-lg">Add Subject</h3>
-                  <button
-                    class="text-black closeSub text-4xl hover:text-teal-600"
-                  >
-                    &times;
-                  </button>
+                    <div class="flex items-center gap-4">
+                        <button class="max-w-[150px] text-[20px]font-bold text-xl hover:text-teal-500 showSub">
+                Add subject
+              </button>
+                        <div class="subject h-screen w-full fixed left-0 top-0 justify-center items-center bg-black bg-opacity-50 hidden">
+                            <div class="bg-white rounded shadow-lg w-1/3">
+                                <div class="border-b px-4 py-2 flex justify-between items-center">
+                                    <h3 class="font-semibold text-lg">Add Subject</h3>
+                                    <button class="text-black closeSub text-4xl hover:text-teal-600">
+                      &times;
+                    </button>
+                                </div>
+                                <form class="space-y-6" action="#">
+                                    <div class="p-3">
+                                        <div>
+                                            <label for="subject-name" class="block mb-2 text-sm font-medium text-black">Name</label
+                        >
+                        <input
+                          type="text"
+                          name="subject-name"
+                          id="subject-name"
+                          class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full p-2.5"
+                          required
+                        />
+                      </div>
+                      <div>
+                        <label
+                          for="teacher-name"
+                          class="block mb-2 text-sm font-medium text-black"
+                          >Teacher</label
+                        >
+                        <input
+                          type="text"
+                          name="teacher-name"
+                          id="teacher-name"
+                          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full p-2.5"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div class="flex justify-end items-center w-100 border-t p-3">
+                      <button
+                        class="bg-gray-400 px-3 py-1 rounded text-white mr-1 closeSub"
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        class="bg-teal-600 hover:bg-teal-700 px-3 py-1 rounded text-white"
+                      >
+                        Add
+                      </button>
+                    </div>
+                  </form>
                 </div>
-                <form class="space-y-6" action="#">
-                  <div class="p-3">
-                    <div>
-                      <label
-                        for="subject-name"
-                        class="block mb-2 text-sm font-medium text-black"
-                        >Name</label
-                      >
-                      <input
-                        type="text"
-                        name="subject-name"
-                        id="subject-name"
-                        class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full p-2.5"
-                        required
-                      />
-                    </div>
-                    <div>
-                      <label
-                        for="teacher-name"
-                        class="block mb-2 text-sm font-medium text-black"
-                        >Teacher</label
-                      >
-                      <input
-                        type="text"
-                        name="teacher-name"
-                        id="teacher-name"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full p-2.5"
-                        required
-                      />
-                    </div>
-                  </div>
-                  <div class="flex justify-end items-center w-100 border-t p-3">
-                    <button
-                      class="bg-gray-400 px-3 py-1 rounded text-white mr-1 closeSub"
-                    >
-                      Cancel
-                    </button>
-                    <button
-                      class="bg-teal-600 hover:bg-teal-700 px-3 py-1 rounded text-white"
-                    >
-                      Add
-                    </button>
-                  </div>
-                </form>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <div>
-      <div class="text-center text-2xl font-bold mt-4">
-        Semester {{semester}}
-      </div>
-      <div class="md:px-32 py-8 w-full h-auto flex items-center justify-center pt-5 mb-20 lg:mb-0 ">
-        <div class="shadow overflow-hidden rounded border-b border-gray-200" >
-            <div class="overflow-x-auto">
-                <table class="w-full table-auto">
-                    <thead class="bg-gray-800 text-white">
-                        <tr>
-                            <th class=" text-left py-3 px-4 uppercase font-semibold text-sm">Username</th>
-                            <th class="text-left py-3 px-4 uppercase font-semibold text-sm">First Name</th>
-                            <th class=" text-left py-3 px-4 uppercase font-semibold text-sm">Last name</th>
-                            <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Email</th>
-                            <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Phone Number</th>
-                            <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Address</th>
-                            <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Faculty</th>
-                                <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody class="text-gray-700">
-                        {% for student in students %}
-                        <tr class="hover:bg-gray-100">
-                            <td class=" md:w-auto text-left py-3 px-4">{{student.username}}</td>
-                            <td class=" md:w-auto text-left py-3 px-4">{{student.first_name}}</td>
-                            <td class=" md:w-auto text-left py-3 px-4">{{student.last_name}}</td>
-                            <td class="text-left py-3 px-4 md:table-cell">{{student.email}}</td>
-                            <td class="text-left py-3 px-4 md:table-cell">{{student.phone_number}}</td>
-                            <td class="text-left py-3 px-4 md:table-cell">{{student.address}}</td>
-                            <td class="text-left py-3 px-4 md:table-cell">{{student.faculty}}</td>
-                            <td class="text-left py-3 px-4 md:table-cell">
-                                <a class="hover:text-teal-500" href="{% url 'delete-account' student.username%}">Delete</a>
-                                    </td>
-                                    </tr>
-                                    {% endfor %}
-                                    </tbody>
-                                    </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <div>
+        <div class="text-center text-2xl font-bold mt-4">
+          Semester {{semester}}
         </div>
+        <div class="md:px-32 py-8 w-full h-auto flex items-center justify-center pt-5 mb-20 lg:mb-0 ">
+          <div class="shadow overflow-hidden rounded border-b border-gray-200" >
+              <div class="overflow-x-auto">
+                  <table class="w-full table-auto">
+                      <thead class="bg-gray-800 text-white">
+                          <tr>
+                              <th class=" text-left py-3 px-4 uppercase font-semibold text-sm">Username</th>
+                              <th class="text-left py-3 px-4 uppercase font-semibold text-sm">First Name</th>
+                              <th class=" text-left py-3 px-4 uppercase font-semibold text-sm">Last name</th>
+                              <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Email</th>
+                              <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Phone Number</th>
+                              <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Adress</th>
+                              <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Faculty</th>
+                                  <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Action</th>
+                          </tr>
+                      </thead>
+                      <tbody class="text-gray-700">
+                          {% for student in students %}
+                          <tr class="hover:bg-gray-100">
+                              <td class=" md:w-auto text-left py-3 px-4">{{student.username}}</td>
+                              <td class=" md:w-auto text-left py-3 px-4">{{student.first_name}}</td>
+                              <td class=" md:w-auto text-left py-3 px-4">{{student.last_name}}</td>
+                              <td class="text-left py-3 px-4 md:table-cell">{{student.email}}</td>
+                              <td class="text-left py-3 px-4 md:table-cell">{{student.phone_number}}</td>
+                              <td class="text-left py-3 px-4 md:table-cell">{{student.address}}</td>
+                              <td class="text-left py-3 px-4 md:table-cell">{{student.faculty}}</td>
+                              <td class="text-left py-3 px-4 md:table-cell">
+                                  <a class="hover:text-teal-500" href="{% url 'delete-account' student.username%}">Delete</a>
+                                      </td>
+                                      </tr>
+                                      {% endfor %}
+                                      </tbody>
+                                      </table>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
 
 
-        <div id="subjects" class="md:px-32 py-8 w-full h-auto flex items-center justify-center pt-5 mb-20 lg:mb-0">
-            <div class="flex flex-col">
-                <div class="text-center">
-                    <h2 class="text-2xl font-bold mb-4 ">Subjects</h2>
-                </div>
+          <div id="subjects" class=" py-8 w-full h-auto flex items-center justify-center pt-5 mb-20 lg:mb-0">
+              <div class="flex flex-col">
+                  <div class="text-center">
+                      <h2 class="text-2xl font-bold mb-4 ">Subjects</h2>
+                  </div>
 
-                <div class="grid grid-flow-row sm:grid-cols-2 gap-10 grid-cols-1 content-center justify-items-center lg:grid-cols-3">
-                    {% for subject in subjects %}
-                    <div class="bg-white hover:shadow-lg  rounded-lg">
+                  <div class="grid grid-flow-row sm:grid-cols-2 gap-10 grid-cols-1 content-center justify-items-center lg:grid-cols-3">
+                      {% for subject in subjects %}
+                      <div class="bg-white hover:shadow-lg  rounded-lg">
 
-                        <div class="relative block rounded-md border border-gray-100 p-4 shadow-xl w-[350px] h-[200px]">
+                          <div class="relative block rounded-md border border-gray-100 p-4 shadow-xl w-[350px] h-[200px]">
 
-                            <div class=" items-center mt-2 h-full justify-center">
-                                <h3 class="uppercase text-xl font-semibold text-teal-600">
+                              <div class=" items-center mt-2 h-full justify-center">
+                                  <h3 class="text-center uppercase text-xl font-semibold text-teal-600">
                                     {{subject}}
-                                </h3>
-                                <p>
+                                  </h3>
+                                  <p class="pt-2 text-center">
 
-                                    <span class="uppercase text-base">Teacher:</span> {{subject.teacher.first_name}} {{subject.teacher.last_name}}<br>
+                                      <span class="font-semibold text-lg">Teacher:</span> {{subject.teacher.first_name}} {{subject.teacher.last_name}}<br>
 
-                                    <span class="uppercase text-base ">Semester Credit hours: 3</span><br>
-                                </p>
-                                <div class="mt-2"><span class="rounded-md px-2 py-1 bg-green-800 text-white">{{subject.notice}}</span></div>
+                                      <span class="font-semibold text-lg">Semester Credit hours: </span>3<br>
+                                  </p>
+                                  {% comment %} <div class="mt-2"><span class="rounded-md px-2 py-1 bg-green-800 text-white">{{subject.notice}}</span></div>
 
-                                <br>
-                                <form method="POST">
-                                    {% csrf_token %}
-                                    <input type="text" name="notice">
-                                    <button type="submit" class="rounded bg-gray-100 p-2 text-teal-600 font-sm hover:bg-teal-600 hover:text-white">Submit</button>
-                                </form>
+                                  <br>
+                                  <form method="POST">
+                                      {% csrf_token %}
+                                      <input type="text" name="notice">
+                                      <button type="submit" class="rounded bg-gray-100 p-2 text-teal-600 font-sm hover:bg-teal-600 hover:text-white">Submit</button>
+                                  </form> {% endcomment %}
 
+                              </div>
 
-                            </div>
+                          </div>
+                      </div>
+                      {% endfor %}
+                  </div>
 
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
+              </div>
+          </div>
+      </div>
+      {% comment %}
+      <script>
+          const subject = document.querySelector(".subject");
+          const showsub = document.querySelector(".showSub");
+          const closesub = document.querySelectorAll(".closeSub");
 
-            </div>
-        </div>
-    </div>
-    {% comment %}
-    <script>
-        const subject = document.querySelector(".subject");
-        const showsub = document.querySelector(".showSub");
-        const closesub = document.querySelectorAll(".closeSub");
-
-        showsub.addEventListener("click", function() {
-            subject.classList.remove("hidden");
-            subject.classList.add("flex");
-        });
-        closesub.forEach((close) => {
-            close.addEventListener("click", function() {
-                subject.classList.add("hidden");
-            });
-        });
-    </script> {% endcomment %}
-</body>
+          showsub.addEventListener("click", function() {
+              subject.classList.remove("hidden");
+              subject.classList.add("flex");
+          });
+          closesub.forEach((close) => {
+              close.addEventListener("click", function() {
+                  subject.classList.add("hidden");
+              });
+          });
+      </script> {% endcomment %}
+  </body>
+</html>

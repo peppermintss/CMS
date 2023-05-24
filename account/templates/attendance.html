@@ -27,7 +27,7 @@
                         {% if student in present %}
                         <td class="text-left py-3 px-4 md:table-cell text-green-800">Present</td>
                         {% else %}
-                        <td class="text-left py-3 px-4 md:table-cell">Absent</td>
+                        <td class="text-left py-3 px-4 md:table-cell text-red-800">Absent</td>
                         {% endif %}
                         <td class="text-left py-3 px-4 md:table-cell">
                             <a class="hover:text-teal-500" href="{% url 'delete-account' student.username%}"></a>
