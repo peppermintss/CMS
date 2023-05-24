@@ -19,7 +19,7 @@ class Subject(models.Model):
     teacher = models.ForeignKey(
         Account,
         limit_choices_to={"groups__name": "teacher"},
-        on_delete=models.DO_NOTHING,
+        on_delete=models.CASCADE,
     )
     semester = models.IntegerField()
     notice = models.CharField(max_length=250, null=True)
