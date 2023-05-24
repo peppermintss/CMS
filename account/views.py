@@ -41,7 +41,7 @@ def get_assignments(request, subjects):
     return assignments, submitted_assignments, missed_assignments
 
 
-# OO LOOK AT THIS IF ELSE LADDER OO ITS NOT GOOD PRACTISE OOO SO SCARY I CRY
+# OO LOOK AT THIS IF ELSE LADDER OO ITS NOT GOOD PRACTICE OOO SO SCARY I CRY
 
 
 # THIS FUNCTION IS EXTREMELY CLUTTERED REFACTOR PLEASE I CRY OMG SO BAD
