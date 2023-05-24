@@ -14,32 +14,36 @@
             </div>
             <div class="w-full lg:w-1/2 py-8 px-8">
                 <h2 class="text-3xl mb-4">Register</h2>
-                <p class="mb-4 text-xl">
+                <p class="mb-4 text-xl text-gray-500">
                     {% if faculty == 'teacher' %} Register a new teacher. {% else %} Register a new student. {% endif %}
                 </p>
                 <form method="POST" action="/add_account/{{faculty}}/{{semester}}/">
                     {% csrf_token %}
                     <div class="grid grid-cols-2 gap-5">
-
-                        {{form.first_name.label}} {{form.first_name}} {{form.last_name.label}} {{form.last_name}}
+                        <div class="flex flex-col">
+                            {{form.first_name.label}} {{form.first_name }} 
+                        </div>
+                        <div class="flex flex-col">
+                            {{form.last_name.label}} {{form.last_name}}
+                        </div>
                     </div>
-                    <div class="mt-5">
+                    <div class="mt-5 flex flex-col">
                         {{form.email.label}} {{form.email}}
                     </div>
 
-                    <div class="mt-5">
+                    <div class="mt-5 flex flex-col">
                         {{form.phone_number.label}} {{form.phone_number}}
                     </div>
 
 
-                    <div class="mt-5">
+                    <div class="mt-5 flex flex-col">
                         {{form.address.label}} {{form.address}}
                     </div>
 
 
 
                     <div class="mt-5">
-                        <button type="submit" hx-target="body" class="w-full bg-teal-700 hover:bg-teal-600 py-3 text-center text-white rounded-lg">Register Now</button>
+                        <button type="submit" hx-target="body" class="w-full rounded-lg bg-gray-100 p-2 text-teal-600 font-semibold hover:bg-teal-600 hover:text-white transition">Register Now</button>
                     </div>
                 </form>
             </div>
