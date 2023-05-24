@@ -1,26 +1,80 @@
 {% include 'navbar.html' %}
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
-<section class="h-auto pt-2 flex font-medium items-center justify-center w-full p-10">
+<section class="h-auto pt-3  font-medium items-center justify-center w-full p-10">
     <div class="grid gap-8">
         <div class="grid content-center justify-items-center gap-3">
-            <div class=" break-all text-center">
-                <h1 class="text-3xl darktext font-bold text-center">Welcome {{user.first_name}} {{user.last_name}}</h1>
-
+            <div class="break-all text-center">
+                <h1 class="text-3xl darktext font-bold text-center">
+                    Welcome {{user.first_name}} {{user.last_name}}
+                </h1>
+                <span class="font-semi-bold text-lg  text-gray-500"><br />
+          {{user.faculty}} Semester {{user.semester}}  </span
+        >
+      </div>
+    </div>
+    
+    <div class="main-container bg-gray-50 p-8 rounded-lg">
+        
+        <h2 class="text-3xl font-semibold pt-2 mb-4 text-center">Subject</h2>
+        <div class="flex justify-end"><a href="" class="  text-black px-4 py-2 rounded-lg underline">Students</a></div>
+        <div class="flex justify-between gap-8">
+            <div class="rounded-lg flex-grow">
+                <div class="flex flex-col pt-4 items-center h-[250px]">
+                    <h3 class="text-xl font-semibold text-teal-600 mb-4">Assignments</h3>
+                    <div class="flex flex-col items-center">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <input type="text" name="notice" placeholder="Enter Assignment" class="focus:ring-teal-500 focus:border-teal-500">
+                            <button type="submit" class="rounded bg-gray-400 text-white px-4 py-2 mt-4 ">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="rounded-lg flex-grow border-l pl-8">
+                <div class="flex flex-col pt-4 items-center h-[250px]">
+                    <h3 class="text-xl font-semibold text-teal-600 mb-4">Notice Board</h3>
+                    <div class="flex flex-col items-center">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <input type="text" name="notice" placeholder="Enter Notice" class="focus:ring-teal-500 focus:border-teal-500">
+                            <button type="submit" class="rounded bg-gray-400  text-white px-4 py-2 mt-4 ">Submit</button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
+        
     </div>
+    
+    
 </section>
 
 
-<div id="subject-container" class="text-lg">
-    <div>
-        {% for subject in teacher.subject_set.all %} {{subject}} {% for assignment in subject.assignment_set.all %}
+  
+<style>
+/* hide scrollbar for chrome,safari*/
+#about::-webkit-scrollbar{
+    display: none;
+}
 
-        <a href="#">
-        {{assignment}}
-        </a> {% endfor %}
-        <button class="addAssignment"> Add assignment</button>
-    </div>
+/* hide scrollbar for firefox*/
+#about{
+  scrollbar-width: none;
+}
+
+/* hide scrollbar for Edge, IE*/
+#about{
+  -ms-overflow-style: none;
+}
+
+</style>
+
+
+
+{% comment %} <------This is a comment----> 
+{% for subject in teacher.subject_set.all %}
 
     {% endfor %}
 </div>
+{% endfor %}
+{% endcomment %}
