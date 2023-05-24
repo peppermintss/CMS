@@ -30,8 +30,8 @@ class Subject(models.Model):
 
 class Assignment(models.Model):
     title = models.CharField(max_length=60)
-    start_date = models.DateField()
-    deadline = models.DateField()
+    start_date = models.DateField(null=True, blank=False)
+    deadline = models.DateField(null=True, blank=False)
     assignment_file = models.FileField(upload_to=file_name_generator)
     subject = models.ForeignKey(Subject, on_delete=models.DO_NOTHING, to_field="name")
     submitted_by = models.ManyToManyField(

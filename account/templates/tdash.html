@@ -74,8 +74,7 @@
 {% comment %} <------This is a comment----> 
 {% for subject in teacher.subject_set.all %}
 
-<div id="subject-container">
-    {{subject}}
+    {% endfor %}
 </div>
 {% endfor %}
 {% endcomment %}
