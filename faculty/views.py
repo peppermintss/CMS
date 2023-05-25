@@ -103,7 +103,7 @@ def add_assignment(request, subject):
             new_assignment.subject = Subject.objects.get(name=subject.upper())
             new_assignment.save()
 
-            print(request.headers["Referer"])
+            return redirect(request.headers["Referer"])
         else:
             print(form.errors)
 
