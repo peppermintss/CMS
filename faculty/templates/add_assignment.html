@@ -1,8 +1,26 @@
-<form method="POST" enctype="multipart/form-data" hx-post="/add_assignment/{{subject}}/" hx-target="body">
+<!-- <form method="POST" enctype="multipart/form-data" hx-post="/add_assignment/{{subject}}/" hx-target="body">
     {% csrf_token %} {{form.title.label}} {{form.title}}
     <p></p> {{form.start_date.label}} {{form.start_date}}
     <p></p>{{form.deadline.label}} {{form.deadline}}
     <p></p>{{form.assignment_file.label}} {{form.assignment_file}}
 
     <button type="submit"> Submit </button>
+</form> -->
+
+<form method="POST" enctype="multipart/form-data" hx-post="/add_assignment/{{subject}}/" hx-target="body" class="space-y-4">
+    {% csrf_token %}
+    <div class="flex flex-col">
+        <label for="title" class="text-sm rounded font-medium text-black">Title</label> {{ form.title }}
+    </div>
+    <div class="flex flex-col">
+        <label for="start_date" class="text-sm font-medium text-black">Start Date</label> {{ form.start_date }}
+    </div>
+    <div class="flex flex-col">
+        <label for="deadline" class="text-sm font-medium text-black">Deadline</label> {{ form.deadline }}
+    </div>
+    <div class="flex flex-col">
+        <label for="assignment_file" class="text-sm font-medium text-black">File</label> {{ form.assignment_file }}
+    </div>
+
+    <button type="submit" name="submit" class="bg-teal-600 hover:bg-teal-700 px-4 py-2 rounded text-white">Submit</button>
 </form>

@@ -17,6 +17,7 @@ from faculty.views import (
     download,
     submit_assignment,
     add_assignment,
+    assignment_detail,
 )
 
 
@@ -58,6 +59,7 @@ urlpatterns = [
         submit_assignment,
         name="submit-assignment",
     ),
+    path("assignment_detail/<int:pk>", assignment_detail, name="assignment-detail"),
     path(
         "add_assignment/<str:subject>/",
         add_assignment,

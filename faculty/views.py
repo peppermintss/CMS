@@ -115,6 +115,10 @@ def add_assignment(request, subject):
     return render(request, "add_assignment.html", context=context)
 
 
+def assignment_detail(request, pk):
+    return render(request, "assignment_detail.html")
+
+
 def get_referer(request):
     referer = request.META.get("HTTP_REFERER")
     if not referer:

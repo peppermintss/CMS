@@ -23,7 +23,7 @@
                             <h3 class="text-xl font-semibold text-teal-600 mb-4">Assignments</h3>
                             <ul>
                                 {% for assignment in subject.assignment_set.all %}
-                                <li><a href="">{{assignment}}</a></li>
+                                <li><a href="{% url 'assignment-detail' assignment.id %}">{{assignment}}</a></li>
 
 
                                 {% endfor %}
