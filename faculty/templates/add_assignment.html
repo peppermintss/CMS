@@ -1,4 +1,8 @@
-<form method="POST" enctype="multipart/form-data">
-    {% csrf_token %} {{form.as_p}}
+<form method="POST" enctype="multipart/form-data" hx-post="/add_assignment/{{subject}}/">
+    {% csrf_token %} {{form.title.label}} {{form.title}}
+    <p></p> {{form.start_date.label}} {{form.start_date}}
+    <p></p>{{form.deadline.label}} {{form.deadline}}
+    <p></p>{{form.assignment_file.label}} {{form.assignment_file}}
+
     <button type="submit"> Submit </button>
 </form>

@@ -94,20 +94,25 @@ def submit_assignment(request, pk):
 
 
 def add_assignment(request, subject):
-    form = AssignmentAddForm
+    form = AssignmentAddForm()
     if request.method == "POST":
         form = AssignmentAddForm(request.POST, request.FILES)
 
         if form.is_valid():
-            print("validated")
             new_assignment = form.save(commit=False)
-            new_assignment.subject = Subject.objects.get(name=subject.lower())
-
+            new_assignment.subject = Subject.objects.get(name=subject.upper())
             new_assignment.save()
-            return redirect(get_referer(request))
+
+            print(request.headers["Referer"])
         else:
             print(form.errors)
-    return render(request, "add_assignment.html", {"form": form})
+
+    context = {
+        "form": form,
+        "subject": subject,
+    }
+
+    return render(request, "add_assignment.html", context=context)
 
 
 def get_referer(request):

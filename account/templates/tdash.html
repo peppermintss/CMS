@@ -15,11 +15,11 @@
             <h2 class="text-gray-600 text-3xl font-semibold pt-1 mb-1 text-center uppercase">{{subject}}</h2>
             <div class="main-container bg-gray-50 p-1 rounded-lg h-[300px] overflow-hidden overflow-y-auto" id="about">
 
-                
+
                 <div class="flex justify-end"><a href="" class="  text-black hover:text-teal-600 px-4 py-2 rounded-lg underline">Students</a></div>
-                <div class="flex justify-between gap-8  " >
+                <div class="flex justify-between gap-8  ">
                     <div class="rounded-lg flex-grow">
-                        <div class="flex flex-col pt-4 items-center ">
+                        <div class="flex flex-col pt-4 items-center" id="{{subject}}">
                             <h3 class="text-xl font-semibold text-teal-600 mb-4">Assignments</h3>
                             <ul>
                                 {% for assignment in subject.assignment_set.all %}
@@ -29,20 +29,15 @@
                                 {% endfor %}
                             </ul>
                             <div class="pt-2 justify center text-justify">
-                                <p>
-                                    <b >
-                                    <span class="uppercase font-bold px-2 py-1 ">Subject</span>
-                                    </b>
-                                    this is your homework
-                                </p>
+
                                 <hr>
                                 <br>
                             </div>
                             <div class="flex  items-center">
-                                
-                                    
-                                    <a href="#" class="rounded bg-gray-400 text-white px-4 py-2 mt-4 hover:text-black showAssign">Add assignment</a>
-                                
+
+
+                                <button hx-get="/add_assignment/{{subject}}" hx-target="#{{subject}}">Add assignment </button>
+
                                 <div class="myAssign h-screen w-full fixed z-10 inset-0 overflow-y-auto left-0 top-0  justify-center items-center bg-black bg-opacity-50 hidden 
                                 ">
                                     <div class="bg-white rounded shadow-lg w-1/3">
@@ -58,7 +53,7 @@
                                                 <div>
                                                     <label for="start-date" class="block mb-2 text-sm font-medium text-black ">Start date</label>
                                                     <input type="date" name="start-date" id="start-date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full p-2.5" required>
-                                                    
+
 
                                                 </div>
                                                 <div>
@@ -79,7 +74,7 @@
                                     </div>
                                 </div>
 
-                                
+
                             </div>
                         </div>
                     </div>
@@ -89,8 +84,8 @@
                             <h3 class="text-xl font-semibold text-teal-600 mb-4">Notice Board</h3>
                             <div class="pt-2 justify center text-justify">
                                 <p>
-                                    
-                                    here should be a notice
+
+                                    {{subject.notice}}
                                 </p>
                                 <hr>
                                 <br>
@@ -133,7 +128,7 @@
     }
 </style>
 
-<script>
+<!-- <script>
     const myAssign = document.querySelector('.myAssign');
     const showassign = document.querySelector('.showAssign');
     const closeassign = document.querySelector('.closeAssign');
@@ -148,15 +143,4 @@
         myAssign.classList.remove('flex');
     });
 </script>
-
-
-
-
-
-
-
-{% comment %}
-<------This is a comment---->
-    {% for subject in teacher.subject_set.all %} {% endfor %}
-    </div>
-    {% endfor %} {% endcomment %}
+ -->
